@@ -1,8 +1,8 @@
-# Twitter Clone
+# Twitter Clone [![Build Status](https://travis-ci.org/lukasmartinelli/twitter-clone.svg)](https://travis-ci.org/lukasmartinelli/twitter-clone)
 
-This is a Java Web Application built with Java Server Faces. 
+This is a Java Web Application built with Java Server Faces.
 It is a mini project created after the specifications given
-in the [Internet Technologies](http://studien.hsr.ch/allModules/23331_M_IntTe.html) lecture. 
+in the [Internet Technologies](http://studien.hsr.ch/allModules/23331_M_IntTe.html) lecture.
 
 ## Requirements
 
