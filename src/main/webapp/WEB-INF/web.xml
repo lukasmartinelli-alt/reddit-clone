@@ -18,6 +18,10 @@
     <servlet-name>Faces Servlet</servlet-name>
     <url-pattern>/faces/*</url-pattern>
   </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>Faces Servlet</servlet-name>
+    <url-pattern>*.xhtml</url-pattern>
+  </servlet-mapping>
   <context-param>
     <description>State saving method: 'client' or 'server' (=default). See JSF Specification 2.5.2</description>
     <param-name>javax.faces.STATE_SAVING_METHOD</param-name>
@@ -26,6 +30,10 @@
   <context-param>
     <param-name>javax.servlet.jsp.jstl.fmt.localizationContext</param-name>
     <param-value>resources.application</param-value>
+  </context-param>
+  <context-param>
+    <param-name>javax.faces.PROJECT_STAGE</param-name>
+    <param-value>Development</param-value>
   </context-param>
   <listener>
     <listener-class>com.sun.faces.config.ConfigureListener</listener-class>
