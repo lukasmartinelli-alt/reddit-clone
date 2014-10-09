@@ -6,7 +6,7 @@
     version="2.2">
 	<managed-bean>
 		<managed-bean-name>loginBeam</managed-bean-name>
-		<managed-bean-class>ch.lukasmartinelli.twitterclone.LoginBeam</managed-bean-class>
+		<managed-bean-class>ch.lukasmartinelli.redditclone.LoginBeam</managed-bean-class>
 		<managed-bean-scope>session</managed-bean-scope>
 	</managed-bean>
 	<navigation-rule>
