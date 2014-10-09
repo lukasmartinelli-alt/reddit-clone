@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:ui="http://java.sun.com/jsf/facelets">
+<h:head>
+	<meta charset="UTF-8"></meta>
+	<title><ui:insert name="title">Reddit Clone</ui:insert></title>
+	<link href='http://fonts.googleapis.com/css?family=Istok+Web:400,700'
+		rel='stylesheet' type='text/css' />
+	<link rel="shortcut icon" type="image/x-icon" href="#{request.contextPath}/resources/images/favicon.ico" />
+	<h:outputStylesheet library="css" name="base.css" />
+	<h:outputStylesheet library="css" name="layout.css" />
+	<h:outputStylesheet library="css" name="modules.css" />
+</h:head>
+<h:body>
+	<div class="header">
+		<div class="branding">
+			<a href="/">
+				<h1>
+					<h:graphicImage value="resources/images/reddit.png" />
+					<em>reddit</em>clone
+				</h1>
+			</a>
+		</div>
+		<div class="header-actions">
+			<ui:insert name="header"></ui:insert>
+		</div>
+	</div>
+	<div class="main">
+		<ui:insert name="content"></ui:insert>
+	</div>
+	<h:outputScript library="js" name="svg-injector.js" />
+	<script type="text/javascript">
+		var mySVGsToInject = document.querySelectorAll('.upvote, .downvote');
+		SVGInjector(mySVGsToInject);
+	</script>
+</h:body>
+</html>
