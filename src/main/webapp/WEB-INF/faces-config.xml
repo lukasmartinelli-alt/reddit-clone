@@ -5,8 +5,8 @@
     xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-facesconfig_2_2.xsd"
     version="2.2">
 	<managed-bean>
-		<managed-bean-name>loginBeam</managed-bean-name>
-		<managed-bean-class>ch.lukasmartinelli.redditclone.LoginBeam</managed-bean-class>
+		<managed-bean-name>loginController</managed-bean-name>
+		<managed-bean-class>ch.lukasmartinelli.redditclone.LoginController</managed-bean-class>
 		<managed-bean-scope>session</managed-bean-scope>
 	</managed-bean>
 	<navigation-rule>
