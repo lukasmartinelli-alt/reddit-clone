@@ -1,8 +1,10 @@
-# Twitter Clone [![Build Status](https://travis-ci.org/lukasmartinelli/reddit-clone.svg?branch=master)](https://travis-ci.org/lukasmartinelli/reddit-clone)
+# Reddit Clone [![Build Status](https://travis-ci.org/lukasmartinelli/reddit-clone.svg?branch=master)](https://travis-ci.org/lukasmartinelli/reddit-clone)
 
 This is a Java Web Application built with Java Server Faces.
 It is a mini project created after the specifications given
 in the [Internet Technologies](http://studien.hsr.ch/allModules/23331_M_IntTe.html) lecture.
+
+![Screenshot](screenshot.png?raw=true "Screenshot of Reddit Clone")
 
 ## Requirements
 
