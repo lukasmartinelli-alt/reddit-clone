@@ -9,6 +9,21 @@
 		<managed-bean-class>ch.lukasmartinelli.redditclone.LoginController</managed-bean-class>
 		<managed-bean-scope>session</managed-bean-scope>
 	</managed-bean>
+	<managed-bean>
+		<managed-bean-name>user</managed-bean-name>
+		<managed-bean-class>ch.lukasmartinelli.redditclone.User</managed-bean-class>
+		<managed-bean-scope>session</managed-bean-scope>
+	</managed-bean>
+	<managed-bean>
+		<managed-bean-name>reddit</managed-bean-name>
+		<managed-bean-class>ch.lukasmartinelli.redditclone.Reddit</managed-bean-class>
+		<managed-bean-scope>session</managed-bean-scope>
+	</managed-bean>
+		<managed-bean>
+		<managed-bean-name>comment</managed-bean-name>
+		<managed-bean-class>ch.lukasmartinelli.redditclone.Comment</managed-bean-class>
+		<managed-bean-scope>session</managed-bean-scope>
+	</managed-bean>
 	<navigation-rule>
 		<display-name>login.xhtml</display-name>
 		<from-view-id>/login.xhtml</from-view-id>
