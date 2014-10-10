@@ -137,8 +137,6 @@ form, fieldset {
 }
 
 button, a.button, input, select, textarea {
-	font-family: "Segoe UI", Frutiger, "Frutiger Linotype", "Dejavu Sans",
-		"Helvetica Neue", Arial, sans-serif;
 	font-size: 1.6rem;
 	padding: 0.8rem 1.2rem;
 	outline: none;
@@ -167,6 +165,7 @@ input, select, textarea {
 	-webkit-transition: border-color, 0.3s;
 	transition: border-color, 0.3s;
 	border: 2px solid #D2DDE5;
+	margin-top: 1rem;
 }
 
 input:focus, select:focus, textarea:focus {
@@ -191,10 +190,6 @@ input[type="checkbox"] {
 
 input[type="checkbox"]+p.help-block {
 	font-size: 1.4rem;
-}
-
-input[type="file"]::-webkit-file-upload-button {
-	visibility: hidden;
 }
 
 .form-horizontal .control-group {
