@@ -1,7 +1,8 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml"
 	xmlns:h="http://java.sun.com/jsf/html"
-	xmlns:ui="http://java.sun.com/jsf/facelets">
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://xmlns.jcp.org/jsf/passthrough">
 <h:head>
 	<meta charset="UTF-8"></meta>
 	<title><ui:insert name="title">Reddit Clone</ui:insert></title>
@@ -15,15 +16,25 @@
 <h:body>
 	<div class="header">
 		<div class="branding">
-			<a href="/">
+			<h:link outcome="home">
 				<h1>
 					<h:graphicImage value="resources/images/reddit.png" />
 					<em>reddit</em>clone
 				</h1>
-			</a>
+			</h:link>
 		</div>
-		<div class="header-actions">
-			<ui:insert name="header"></ui:insert>
+		<div class="submit">
+			<h:link outcome="NewReddit" value="Submit new Link" rendered="#{loginController.isLoggedIn()}" styleClass="button button-primary"></h:link>
+		</div>
+		<div class="login">
+			<h:form rendered="#{loginController.isLoggedIn() == false}">
+				<h:inputText value="#{loginController.username}" p:placeholder="Username"></h:inputText>
+				<h:inputSecret value="#{loginController.password}" p:placeholder="Password"></h:inputSecret>
+				<h:commandButton action="#{loginController.register}" styleClass="button" value="Registrieren"
+					type="submit" />
+				<h:commandButton action="#{loginController.login}" styleClass="button button-primary" value="Login"
+					type="submit" />
+			</h:form>
 		</div>
 	</div>
 	<div class="main">

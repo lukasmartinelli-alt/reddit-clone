@@ -4,15 +4,19 @@ import java.io.Serializable;
 
 import javax.faces.application.FacesMessage;
 import javax.faces.context.FacesContext;
+import javax.servlet.http.HttpSession;
 
 public class LoginController implements Serializable {
 	private String username;
 	private String password;
-	private Boolean isLoggedIn;
-	private FacesMessage msg;
+	private UserRepository users;
+	private HttpSession session;
+	private static String CURRENT_USER_ATTRIBUTE = "currentUser";
 	
 	public LoginController() {
-		
+		HttpSession session = (HttpSession)FacesContext.getCurrentInstance().getExternalContext().getSession(true);
+		this.users = new UserSessionRepository(session);
+		this.session = session;
 	}
 
 	public String getUsername() {
@@ -31,21 +35,37 @@ public class LoginController implements Serializable {
 		this.password = password;
 	}
 	
+	public boolean isLoggedIn() {
+		return session.getAttribute(CURRENT_USER_ATTRIBUTE) != null;
+	}
+	
+	/**
+	 * Create a new user with the given credentials and log him in
+	 */
+	public String register() {
+		User user = new User();
+		user.setLogin(getUsername());
+		user.setName(getUsername());
+		user.setPassword(getPassword());
+		users.createUser(user);
+		
+		return login();
+	}
+	
 	public String login() {
-        if (this.getUsername().equals("daniel") && this.getPassword().equals("123")) {
-            this.isLoggedIn = true;                 
-            FacesContext.getCurrentInstance().getExternalContext().getSessionMap().put("loginController", this);
-            return "home.html";
-        } else {
-            this.isLoggedIn = false;
-            msg = new FacesMessage(FacesMessage.SEVERITY_ERROR, "Invalider Benutzername.", username);
-            FacesContext.getCurrentInstance().addMessage(null, msg);
-            return "login.html";
-        }
+		User user = users.getUserByName(getUsername());
+		
+		if(user != null && user.checkPassword(getPassword())) {
+			session.setAttribute(CURRENT_USER_ATTRIBUTE, user);
+		} else {
+			//TODO: authentication failed..
+		}
+		
+		return null;
     }
 	
 	public String logOut() {
-        FacesContext.getCurrentInstance().getExternalContext().getSessionMap().remove("loginController");
-        return "login.html";
+		session.removeAttribute(CURRENT_USER_ATTRIBUTE);
+        return null;
     }
 }
