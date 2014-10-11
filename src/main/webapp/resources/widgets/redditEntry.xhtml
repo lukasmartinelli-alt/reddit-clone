@@ -1,29 +1,38 @@
 <ui:composition xmlns="http://www.w3.org/1999/xhtml"
     xmlns:cc="http://xmlns.jcp.org/jsf/composite"
+    xmlns:h="http://java.sun.com/jsf/html"
     xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
 <cc:interface>
-	<cc:attribute name="title"/>
-	<cc:attribute name="link"/>
-	<cc:attribute name="user"/>
-    <cc:attribute name="timeAgo"/>
-   	<cc:attribute name="commentsCount"/>
-	<cc:attribute name="votes"/>
-	<cc:attribute name="upVote" 
+	<cc:attribute name="title" required="true"/>	
+	<cc:attribute name="link" required="true"/>
+	<cc:attribute name="user" required="true"/>
+    <cc:attribute name="timeAgo" required="true"/>
+   	<cc:attribute name="commentsCount" required="true"/>
+	<cc:attribute name="votesCount" required="true"/>
+	<cc:attribute name="upVoteAction" 
          method-signature="java.lang.Void upVote()" />
-	<cc:attribute name="downVote" 
+	<cc:attribute name="downVoteAction" 
          method-signature="java.lang.Void downVote()" />
+
 </cc:interface>
 <cc:implementation>
 		<div class="reddit">
-			<div class="votebuttons" title="#{cc.attrs.votes} Votes">
+			<div class="votebuttons" title="#{cc.attrs.votesCount} Votes">
 				<h:graphicImage styleClass="upvote active"
 					value="resources/images/caret-top.svg" />
-				<span class="vote_sum">4</span>
-				<h:graphicImage styleClass="downvote"
-					value="resources/images/caret-bottom.svg" />
+				<span class="vote_sum">#{cc.attrs.votesCount}</span>
+				<h:commandLink action="#{cc.attrs.downVoteAction}">
+					<h:graphicImage styleClass="downvote"
+						value="resources/images/caret-bottom.svg" />
+				</h:commandLink>
+				
+
 			</div>
 			<div class="reddit-wrapper">
-				<h2>#{cc.attrs.title}</h2>
+				<h:outputLink value="#{cc.attrs.link}">
+					<h2>#{cc.attrs.title}</h2>
+				</h:outputLink>
+				
 				<p>
 					#{cc.attrs.timeAgo} <a href="/link/to/author/">#{cc.attrs.user}</a>
 				</p>

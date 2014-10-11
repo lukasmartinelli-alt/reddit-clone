@@ -1,10 +1,15 @@
 package ch.lukasmartinelli.redditclone;
 
+import java.io.Serializable;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.Date;
 
-public class Reddit {
+public class Reddit implements Serializable {
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	private String titel;
 	private User user;
 	private URL link;
@@ -74,9 +79,9 @@ public class Reddit {
 	}
 
 	public void upVote() {
-		
+		System.out.println("upVote reddit");
 	}
 	public void downVote() {
-		
+		System.out.println("downVote reddit");
 	}
 }

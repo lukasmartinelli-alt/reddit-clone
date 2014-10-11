@@ -1,5 +1,6 @@
 package ch.lukasmartinelli.redditclone;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
 import javax.servlet.http.HttpSession;
@@ -7,7 +8,11 @@ import javax.servlet.http.HttpSession;
 /**
  * Uses an Http Session as backing store for the users
  */
-public class UserSessionRepository implements UserRepository {
+public class UserSessionRepository implements UserRepository, Serializable {
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	private HttpSession session;
 	private static String REGISTERED_USERS_ATTRIBUTE = "registeredUsers";
 

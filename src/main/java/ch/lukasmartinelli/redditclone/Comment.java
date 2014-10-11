@@ -1,8 +1,13 @@
 package ch.lukasmartinelli.redditclone;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
-public class Comment {
+public class Comment  implements Serializable {
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	private String text;
 	private ArrayList<Comment> comments = new ArrayList<>();
 
