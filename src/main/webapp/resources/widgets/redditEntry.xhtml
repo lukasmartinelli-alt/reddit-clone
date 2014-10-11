@@ -1,0 +1,37 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:cc="http://xmlns.jcp.org/jsf/composite"
+    xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+<cc:interface>
+	<cc:attribute name="title"/>
+	<cc:attribute name="link"/>
+	<cc:attribute name="user"/>
+    <cc:attribute name="timeAgo"/>
+   	<cc:attribute name="commentsCount"/>
+	<cc:attribute name="votes"/>
+	<cc:attribute name="upVote" 
+         method-signature="java.lang.Void upVote()" />
+	<cc:attribute name="downVote" 
+         method-signature="java.lang.Void downVote()" />
+</cc:interface>
+<cc:implementation>
+		<div class="reddit">
+			<div class="votebuttons" title="#{cc.attrs.votes} Votes">
+				<h:graphicImage styleClass="upvote active"
+					value="resources/images/caret-top.svg" />
+				<span class="vote_sum">4</span>
+				<h:graphicImage styleClass="downvote"
+					value="resources/images/caret-bottom.svg" />
+			</div>
+			<div class="reddit-wrapper">
+				<h2>#{cc.attrs.title}</h2>
+				<p>
+					#{cc.attrs.timeAgo} <a href="/link/to/author/">#{cc.attrs.user}</a>
+				</p>
+				<p>
+					<em><a href="/link/to/comments/">#{cc.attrs.commentsCount} comments</a></em>
+				</p>
+			</div>
+		</div>
+
+</cc:implementation>
+</ui:composition>
