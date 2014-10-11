@@ -1,5 +1,5 @@
 <ui:composition xmlns="http://www.w3.org/1999/xhtml"
-<<<<<<< HEAD
+
 	xmlns:cc="http://xmlns.jcp.org/jsf/composite"
 	xmlns:h="http://java.sun.com/jsf/html"
 	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
@@ -12,47 +12,27 @@
 		<cc:attribute name="commentsCount" required="true" />
 		<cc:attribute name="votesCount" required="true" />
 		<cc:attribute name="upVoteAction" required="true" 
-			method-signature="java.lang.Void upVote()"  />
+		method-signature="java.lang.Void upVote()"  />
 		<cc:attribute name="downVoteAction" required="true" 
-			method-signature="java.lang.Void downVote()" />
-
+		method-signature="java.lang.Void downVote()" />
+		<cc:attribute name="hasUpvoted" 
+         method-signature="java.lang.Void hasCurrentUserUpvoted" />
+		<cc:attribute name="hasDownvoted" 
+         method-signature="java.lang.Void hasCurrentUserDownvoted" />
 
 	</cc:interface>
 	<cc:implementation>
+
 		<div class="reddit">
 			<div class="votebuttons" title="#{cc.attrs.votesCount} Votes">
 			
 			<h:commandLink action="#{cc.attrs.upVoteAction}">
-					<h:graphicImage styleClass="upvote active"
-=======
-    xmlns:cc="http://xmlns.jcp.org/jsf/composite"
-    xmlns:h="http://java.sun.com/jsf/html"
-    xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
-<cc:interface>
-	<cc:attribute name="title" required="true"/>	
-	<cc:attribute name="link" required="true"/>
-	<cc:attribute name="user" required="true"/>
-    <cc:attribute name="timeAgo" required="true"/>
-   	<cc:attribute name="commentsCount" required="true"/>
-	<cc:attribute name="votesCount" required="true"/>
-	<cc:attribute name="upVoteAction" 
-         method-signature="java.lang.Void upVote()" />
-	<cc:attribute name="downVoteAction" 
-         method-signature="java.lang.Void downVote()" />
-	<cc:attribute name="hasUpvoted" 
-         method-signature="java.lang.Void hasCurrentUserUpvoted" />
-	<cc:attribute name="hasDownvoted" 
-         method-signature="java.lang.Void hasCurrentUserDownvoted" />
-
-</cc:interface>
-<cc:implementation>
-		<div class="reddit">
-			<div class="votebuttons" title="#{cc.attrs.votesCount} Votes">
 				<h:graphicImage styleClass='upvote #{hasUpvoted ? "active" : ""}'
->>>>>>> 0759c7145cd756185f13a986cd38f6c15e6850b7
 					value="resources/images/caret-top.svg" />
 					<f:ajax render="@this voteData"/>
 			</h:commandLink>
+			
+			
 			<h:panelGroup id="voteData">
 				<span  class="vote_sum">#{cc.attrs.votesCount}</span>
 			</h:panelGroup>
@@ -82,6 +62,7 @@
 				</p>
 			</div>
 		</div>
+	
 
 	</cc:implementation>
 </ui:composition>

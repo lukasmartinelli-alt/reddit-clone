@@ -6,10 +6,9 @@ import java.util.ArrayList;
 import java.util.Date;
 
 import javax.faces.context.FacesContext;
-<<<<<<< HEAD
-=======
+
 import javax.servlet.http.HttpSession;
->>>>>>> 0759c7145cd756185f13a986cd38f6c15e6850b7
+
 
 public class Reddit implements Serializable {
 	/**
@@ -142,8 +141,8 @@ public class Reddit implements Serializable {
 	
 
 	public void upVote() {
-<<<<<<< HEAD
-		User u = (User) FacesContext.getCurrentInstance().getExternalContext().getSessionMap().get("User");
+
+		User u = LoginController.getCurrentUser();
 		
 		//if(u!=null) {
 			this.removeVoteFromUser(u);
@@ -152,22 +151,15 @@ public class Reddit implements Serializable {
 
 	}
 	public void downVote() {
-		User u = (User) FacesContext.getCurrentInstance().getExternalContext().getSessionMap().get("User");
+
+		User u = LoginController.getCurrentUser();
 		
 		//if(u!=null) {
 			this.removeVoteFromUser(u);
 			addDownVote(new DownVote(u));
 		//}
-=======
-		UpVote vote = new UpVote(new Date(), LoginController.getCurrentUser());
-		addUpVote(vote);
-		System.out.println("upVote reddit");
+
 	}
-	public void downVote() {
-		DownVote vote = new DownVote(new Date(), LoginController.getCurrentUser());
-		addDownVotes(vote);
-		System.out.println("downVote reddit");
->>>>>>> 0759c7145cd756185f13a986cd38f6c15e6850b7
-	}
+
 
 }
