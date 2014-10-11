@@ -42,6 +42,11 @@ public class LoginController implements Serializable {
 		return session.getAttribute(CURRENT_USER_ATTRIBUTE) != null;
 	}
 	
+	public static User getCurrentUser() {
+		HttpSession session = (HttpSession)FacesContext.getCurrentInstance().getExternalContext().getSession(true);
+		return (User)session.getAttribute(CURRENT_USER_ATTRIBUTE);
+	}
+	
 	/**
 	 * Create a new user with the given credentials and log him in
 	 */

@@ -1,5 +1,9 @@
 package ch.lukasmartinelli.redditclone;
 
-public class UpVote extends Vote {
+import java.util.Date;
 
+public class UpVote extends Vote {
+	public UpVote(Date clickTime, User user) {
+		super(clickTime, user);
+	}
 }

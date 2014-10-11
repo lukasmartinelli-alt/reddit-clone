@@ -5,6 +5,9 @@ import java.net.URL;
 import java.util.ArrayList;
 import java.util.Date;
 
+import javax.faces.context.FacesContext;
+import javax.servlet.http.HttpSession;
+
 public class Reddit implements Serializable {
 	/**
 	 * 
@@ -35,8 +38,35 @@ public class Reddit implements Serializable {
 	public User getUser() {
 		return user;
 	}
+	
 	public void setUser(User user) {
 		this.user = user;
+	}
+	
+	public boolean hasCurrentUserUpvoted() {
+		User currentUser = LoginController.getCurrentUser();
+		
+		if(currentUser == null) return false;
+		
+		for(UpVote vote : getUpVotes()) {
+			if(vote.getUser().getName() == currentUser.getName()) {
+				return true;
+			}
+		}
+		return false;
+	}
+	
+	public boolean hasCurrentUserDownvoted() {
+		User currentUser = LoginController.getCurrentUser();
+		
+		if(currentUser == null) return false;
+		
+		for(DownVote vote : getDownVotes()) {
+			if(vote.getUser().getName() == currentUser.getName()) {
+				return true;
+			}
+		}
+		return false;
 	}
 
 	public URL getLink() {
@@ -79,9 +109,13 @@ public class Reddit implements Serializable {
 	}
 
 	public void upVote() {
+		UpVote vote = new UpVote(new Date(), LoginController.getCurrentUser());
+		addUpVote(vote);
 		System.out.println("upVote reddit");
 	}
 	public void downVote() {
+		DownVote vote = new DownVote(new Date(), LoginController.getCurrentUser());
+		addDownVotes(vote);
 		System.out.println("downVote reddit");
 	}
 }
