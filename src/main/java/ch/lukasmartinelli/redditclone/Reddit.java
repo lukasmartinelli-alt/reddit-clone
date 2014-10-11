@@ -5,12 +5,14 @@ import java.net.URL;
 import java.util.ArrayList;
 import java.util.Date;
 
+import javax.faces.context.FacesContext;
+
 public class Reddit implements Serializable {
 	/**
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
-	private String titel;
+	private String title;
 	private User user;
 	private URL link;
 	private Date createTime;
@@ -18,18 +20,19 @@ public class Reddit implements Serializable {
 	private ArrayList<UpVote> upVotes = new ArrayList<>();
 	private ArrayList<DownVote> downVotes = new ArrayList<>();
 	
-	public Reddit(){};
+	public Reddit(){
+	}
 	
 	public Reddit(String titel, User user){
-		this.titel = titel;
+		this.title = titel;
 		this.setUser(user);
 	}
 	
-	public void setTitel(String titel){
-		this.titel = titel;
+	public void setTitle(String titel){
+		this.title = titel;
 	}
-	public String getTitel(){
-		return titel;
+	public String getTitle(){
+		return title;
 	}
 	
 	public User getUser() {
@@ -70,18 +73,59 @@ public class Reddit implements Serializable {
 	public ArrayList<DownVote> getDownVotes() {
 		return downVotes;
 	}
-	public void addDownVotes(DownVote downVotes) {
+	public void addDownVote(DownVote downVotes) {
 		this.downVotes.add(downVotes);
 	}
 
 	public int getVotesCount() {
 		return upVotes.size() - downVotes.size();
 	}
+	public void removeVoteFromUser(User u) {
+		if(u!=null){
+			UpVote up = getUpVoteFromUser(u);
+			DownVote dn = getDownVoteFromUser(u);
+			if(up!=null) {
+				if(upVotes.contains(up)) upVotes.remove(up);
+			}
+			if(dn!=null) {
+				if(downVotes.contains(dn)) downVotes.remove(dn);
+			}
+		}
+	}
+	public UpVote getUpVoteFromUser(User u) {
+		for(UpVote v: upVotes) {
+			if(v.getUser().getLogin().equals(u.getLogin())){
+				return v;
+			}
+		}
+		return null;
+	}
+	public DownVote getDownVoteFromUser(User u) {
+		for(DownVote v: downVotes) {
+			if(v.getUser().getLogin().equals(u.getLogin())){
+				return v;
+			}
+		}
+		return null;
+	}
+	
 
 	public void upVote() {
-		System.out.println("upVote reddit");
+		User u = (User) FacesContext.getCurrentInstance().getExternalContext().getSessionMap().get("User");
+		
+		//if(u!=null) {
+			this.removeVoteFromUser(u);
+			addUpVote(new UpVote(u));
+		//}
+
 	}
 	public void downVote() {
-		System.out.println("downVote reddit");
+		User u = (User) FacesContext.getCurrentInstance().getExternalContext().getSessionMap().get("User");
+		
+		//if(u!=null) {
+			this.removeVoteFromUser(u);
+			addDownVote(new DownVote(u));
+		//}
 	}
+
 }

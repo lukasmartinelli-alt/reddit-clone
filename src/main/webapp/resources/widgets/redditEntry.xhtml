@@ -1,46 +1,60 @@
 <ui:composition xmlns="http://www.w3.org/1999/xhtml"
-    xmlns:cc="http://xmlns.jcp.org/jsf/composite"
-    xmlns:h="http://java.sun.com/jsf/html"
-    xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
-<cc:interface>
-	<cc:attribute name="title" required="true"/>	
-	<cc:attribute name="link" required="true"/>
-	<cc:attribute name="user" required="true"/>
-    <cc:attribute name="timeAgo" required="true"/>
-   	<cc:attribute name="commentsCount" required="true"/>
-	<cc:attribute name="votesCount" required="true"/>
-	<cc:attribute name="upVoteAction" 
-         method-signature="java.lang.Void upVote()" />
-	<cc:attribute name="downVoteAction" 
-         method-signature="java.lang.Void downVote()" />
+	xmlns:cc="http://xmlns.jcp.org/jsf/composite"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core">
+	<cc:interface>
+		<cc:attribute name="title" required="true" />
+		<cc:attribute name="link" required="true" />
+		<cc:attribute name="user" required="true" />
+		<cc:attribute name="timeAgo" required="true" />
+		<cc:attribute name="commentsCount" required="true" />
+		<cc:attribute name="votesCount" required="true" />
+		<cc:attribute name="upVoteAction" required="true" 
+			method-signature="java.lang.Void upVote()"  />
+		<cc:attribute name="downVoteAction" required="true" 
+			method-signature="java.lang.Void downVote()" />
 
-</cc:interface>
-<cc:implementation>
+
+	</cc:interface>
+	<cc:implementation>
 		<div class="reddit">
 			<div class="votebuttons" title="#{cc.attrs.votesCount} Votes">
-				<h:graphicImage styleClass="upvote active"
+			
+			<h:commandLink action="#{cc.attrs.upVoteAction}">
+					<h:graphicImage styleClass="upvote active"
 					value="resources/images/caret-top.svg" />
-				<span class="vote_sum">#{cc.attrs.votesCount}</span>
+					<f:ajax render="@this voteData"/>
+			</h:commandLink>
+			<h:panelGroup id="voteData">
+				<span  class="vote_sum">#{cc.attrs.votesCount}</span>
+			</h:panelGroup>
+
+
 				<h:commandLink action="#{cc.attrs.downVoteAction}">
 					<h:graphicImage styleClass="downvote"
 						value="resources/images/caret-bottom.svg" />
+					<f:ajax render="@this voteData"/>
 				</h:commandLink>
-				
+
 
 			</div>
 			<div class="reddit-wrapper">
+			
+
 				<h:outputLink value="#{cc.attrs.link}">
 					<h2>#{cc.attrs.title}</h2>
 				</h:outputLink>
-				
+
 				<p>
 					#{cc.attrs.timeAgo} <a href="/link/to/author/">#{cc.attrs.user}</a>
 				</p>
 				<p>
-					<em><a href="/link/to/comments/">#{cc.attrs.commentsCount} comments</a></em>
+					<em><a href="/link/to/comments/">#{cc.attrs.commentsCount}
+							comments</a></em>
 				</p>
 			</div>
 		</div>
 
-</cc:implementation>
+	</cc:implementation>
 </ui:composition>
