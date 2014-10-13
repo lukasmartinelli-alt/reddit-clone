@@ -1,6 +1,8 @@
-package ch.lukasmartinelli.redditclone;
+package ch.lukasmartinelli.redditclone.vote;
 
 import java.util.Date;
+
+import ch.lukasmartinelli.redditclone.User;
 
 
 public class DownVote extends Vote {

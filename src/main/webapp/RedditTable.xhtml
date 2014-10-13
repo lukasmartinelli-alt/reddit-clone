@@ -17,9 +17,9 @@
 					user="Severin Bühler"
 					timeAgo="Hinzugefügt vor 7 Stunden von"
 					commentsCount="5"
-					votesCount="#{reddit.votesCount}"
-					upVoteAction="#{reddit.upVote}"
-					downVoteAction="#{reddit.downVote}"/>
+					votesCount="#{reddit.voteController.votesCount}"
+					upVoteAction="#{reddit.voteController.upVote}"
+					downVoteAction="#{reddit.voteController.downVote}"/>
 			</h:form>
 		</div>
 	</ui:define>
