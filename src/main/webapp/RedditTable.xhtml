@@ -6,15 +6,19 @@
 	xmlns:ui="http://java.sun.com/jsf/facelets"
 	xmlns:p="http://xmlns.jcp.org/jsf/passthrough"
 	xmlns:my="http://java.sun.com/jsf/composite/widgets"
-	xmlns:c="http://java.sun.com/jsp/jstl/core">
+	xmlns:c="http://java.sun.com/jsp/jstl/core"
+	xmlns:pr="http://primefaces.org/ui" >
 	<ui:define name="title">Reddit Table</ui:define>
 	<ui:define name="content">
 		<div class="new-reddit">
 		<h1>Entries</h1>
 			<h:form>
-				<h:dataTable value="#{redditRepository.reddits}" var="re">
-				<h:column>
-					<my:redditEntry 
+			<pr:dataGrid var="re" value="#{redditRepository.reddits}" columns="1" layout="grid"
+        rows="7" paginator="true"
+        paginatorTemplate="{PreviousPageLink} {CurrentPageReport} {NextPageLink}" paginatorPosition="bottom" styleClass="borderless"
+        paginatorAlwaysVisible="false" lazy="true">
+        
+        					<my:redditEntry 
 					title="#{re.title}" 
 					link="#{re.link}"
 					user="#{re.user}"
@@ -23,8 +27,9 @@
 					votesCount="#{re.voteController.votesCount}"
 					upVoteAction="#{re.voteController.upVote}"
 					downVoteAction="#{re.voteController.downVote}"/>
-					</h:column>
-				</h:dataTable>
+        
+        
+        </pr:dataGrid>
 			</h:form>
 		</div>
 	</ui:define>

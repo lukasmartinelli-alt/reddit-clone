@@ -157,6 +157,9 @@ label {
 	display: block;
 	margin-bottom: 0.5rem;
 }
+.ui-datagrid-content {
+   border: none;
+}  
 
 input, select, textarea {
 	width: 100%;
