@@ -18,15 +18,7 @@
         paginatorTemplate="{PreviousPageLink} {CurrentPageReport} {NextPageLink}" paginatorPosition="bottom" styleClass="borderless"
         paginatorAlwaysVisible="false" lazy="true">
         
-        					<my:redditEntry 
-					title="#{re.title}" 
-					link="#{re.link}"
-					user="#{re.user}"
-					timeAgo="Hinzugefügt vor #{re.createTime}"
-					commentsCount="#{re.commentsCount}"
-					votesCount="#{re.voteController.votesCount}"
-					upVoteAction="#{re.voteController.upVote}"
-					downVoteAction="#{re.voteController.downVote}"/>
+        					<my:redditEntry  value="#{re}"/>
         
         
         </pr:dataGrid>

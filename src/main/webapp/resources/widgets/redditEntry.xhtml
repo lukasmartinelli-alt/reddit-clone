@@ -5,58 +5,46 @@
 	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
 	xmlns:f="http://java.sun.com/jsf/core">
 	<cc:interface>
-		<cc:attribute name="title" required="true" />
-		<cc:attribute name="link" required="true" />
-		<cc:attribute name="user" required="true" />
-		<cc:attribute name="timeAgo" required="true" />
-		<cc:attribute name="commentsCount" required="true" />
-		<cc:attribute name="votesCount" required="true" />
-		<cc:attribute name="upVoteAction" required="true" 
-		method-signature="java.lang.Void upVote()"  />
-		<cc:attribute name="downVoteAction" required="true" 
-		method-signature="java.lang.Void downVote()" />
-		<cc:attribute name="hasUpvoted" 
-         method-signature="java.lang.Void hasCurrentUserUpvoted" />
-		<cc:attribute name="hasDownvoted" 
-         method-signature="java.lang.Void hasCurrentUserDownvoted" />
-
+		<cc:attribute name="value"/>
 	</cc:interface>
 	<cc:implementation>
 
 		<div class="reddit">
-			<div class="votebuttons" title="#{cc.attrs.votesCount} Votes">
-			<h:commandLink action="#{cc.attrs.upVoteAction}">
-				<h:graphicImage styleClass='upvote #{hasUpvoted ? "active" : ""}'
+		<h:panelGroup id="voteData">
+			<div class="votebuttons" title="#{cc.attrs.value.voteController.votesCount} Votes">
+			<h:commandLink action="#{cc.attrs.value.voteController.upVote}">
+				<h:graphicImage styleClass='upvote #{cc.attrs.value.voteController.hasCurrentUserUpvoted() ? "active" : ""}'
 					value="resources/images/caret-top.svg" />
 					<f:ajax render="@this voteData"/>
 			</h:commandLink>
 			
 			
-			<h:panelGroup id="voteData">
-				<span  class="vote_sum">#{cc.attrs.votesCount}</span>
-			</h:panelGroup>
+			
+				<span  class="vote_sum">#{cc.attrs.value.voteController.votesCount}</span>
+			
 
 
-				<h:commandLink action="#{cc.attrs.downVoteAction}">
-					<h:graphicImage styleClass='downvote #{hasDownvoted ? "active" : ""}'
+				<h:commandLink action="#{cc.attrs.value.voteController.downVote}">
+					<h:graphicImage styleClass='downvote #{cc.attrs.value.voteController.hasCurrentUserDownvoted() ? "active" : ""}'
 						value="resources/images/caret-bottom.svg" />
 					<f:ajax render="@this voteData"/>
 				</h:commandLink>
-
+				
 
 			</div>
+			</h:panelGroup>
 			<div class="reddit-wrapper">
 			
 
-				<h:outputLink value="#{cc.attrs.link}">
-					<h2>#{cc.attrs.title}</h2>
+				<h:outputLink value="#{cc.attrs.value.link}">
+					<h2>#{cc.attrs.value.title}</h2>
 				</h:outputLink>
 
 				<p>
-					#{cc.attrs.timeAgo} <a href="/link/to/author/">#{cc.attrs.user}</a>
+					#{cc.attrs.value.createTime} <a href="/link/to/author/">#{cc.attrs.value.user}</a>
 				</p>
 				<p>
-					<em><a href="/link/to/comments/">#{cc.attrs.commentsCount}
+					<em><a href="/link/to/comments/">#{cc.attrs.value.commentsCount}
 							comments</a></em>
 				</p>
 			</div>

@@ -22,6 +22,7 @@ public class Reddit implements Serializable {
 	VoteController voteController = new VoteController();
 	
 	public Reddit(){
+	
 	}
 	
 	public Reddit(String titel, User user){
