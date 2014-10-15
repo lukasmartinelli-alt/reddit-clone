@@ -1,11 +1,12 @@
 package ch.lukasmartinelli.redditclone.vote;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
 import ch.lukasmartinelli.redditclone.LoginController;
 import ch.lukasmartinelli.redditclone.User;
 
-public class VoteController {
+public class VoteController implements Serializable {
 
 	private ArrayList<UpVote> upVotes = new ArrayList<>();
 	private ArrayList<DownVote> downVotes = new ArrayList<>();

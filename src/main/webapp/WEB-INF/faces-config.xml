@@ -20,8 +20,8 @@
 		<managed-bean-scope>session</managed-bean-scope>
 	</managed-bean>
 		<managed-bean>
-			<managed-bean-name>redditRepository</managed-bean-name>
-			<managed-bean-class>ch.lukasmartinelli.redditclone.RedditRepository</managed-bean-class>
+			<managed-bean-name>dM</managed-bean-name>
+			<managed-bean-class>ch.lukasmartinelli.redditclone.beans.DataManager</managed-bean-class>
 			<managed-bean-scope>application</managed-bean-scope>
 		</managed-bean>
 	<navigation-rule>
@@ -32,5 +32,4 @@
 			<to-view-id>/welcome.xhtml</to-view-id>
 		</navigation-case>
 	</navigation-rule>
-
 </faces-config>

@@ -3,7 +3,8 @@
 	xmlns:cc="http://xmlns.jcp.org/jsf/composite"
 	xmlns:h="http://java.sun.com/jsf/html"
 	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
-	xmlns:f="http://java.sun.com/jsf/core">
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:pr="http://primefaces.org/ui" >
 	<cc:interface>
 		<cc:attribute name="value"/>
 	</cc:interface>
@@ -12,30 +13,22 @@
 		<div class="reddit">
 		<h:panelGroup id="voteData">
 			<div class="votebuttons" title="#{cc.attrs.value.voteController.votesCount} Votes">
-			<h:commandLink action="#{cc.attrs.value.voteController.upVote}">
-				<h:graphicImage styleClass='upvote #{cc.attrs.value.voteController.hasCurrentUserUpvoted() ? "active" : ""}'
-					value="resources/images/caret-top.svg" />
-					<f:ajax render="@this voteData"/>
-			</h:commandLink>
-			
-			
-			
-				<span  class="vote_sum">#{cc.attrs.value.voteController.votesCount}</span>
-			
-
-
+				<h:commandLink action="#{cc.attrs.value.voteController.upVote}">
+					<h:graphicImage styleClass='upvote #{cc.attrs.value.voteController.hasCurrentUserUpvoted() ? "active" : ""}'
+						value="resources/images/caret-top.svg" />
+						<f:ajax render="@this voteData"/>
+				</h:commandLink>
+					<span  class="vote_sum">#{cc.attrs.value.voteController.votesCount}</span>
 				<h:commandLink action="#{cc.attrs.value.voteController.downVote}">
-					<h:graphicImage styleClass='downvote #{cc.attrs.value.voteController.hasCurrentUserDownvoted() ? "active" : ""}'
-						value="resources/images/caret-bottom.svg" />
-					<f:ajax render="@this voteData"/>
+						<h:graphicImage styleClass='downvote #{cc.attrs.value.voteController.hasCurrentUserDownvoted() ? "active" : ""}'
+							value="resources/images/caret-bottom.svg" />
+						<f:ajax render="@this voteData"/>
 				</h:commandLink>
 				
 
 			</div>
-			</h:panelGroup>
+		</h:panelGroup>
 			<div class="reddit-wrapper">
-			
-
 				<h:outputLink value="#{cc.attrs.value.link}">
 					<h2>#{cc.attrs.value.title}</h2>
 				</h:outputLink>
@@ -49,7 +42,7 @@
 				</p>
 			</div>
 		</div>
-	
+		<pr:poll update="@this voteData" interval="10"/>
 
 	</cc:implementation>
 </ui:composition>
