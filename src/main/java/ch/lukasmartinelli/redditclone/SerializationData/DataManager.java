@@ -48,11 +48,8 @@ public class DataManager {
 	}
 
 	private File getDataFile() throws UnsupportedEncodingException {
-		String path = DataManager.class.getProtectionDomain().getCodeSource()
-				.getLocation().getPath();
-		String decodedPath = URLDecoder.decode(path, "UTF-8");
-		File dataDirectory = new File(decodedPath);
-		File dataFile = new File(dataDirectory, "container.ser");
+		File tmpDir = new File(System.getProperty("java.io.tmpdir"));
+		File dataFile = new File(tmpDir, "container.ser");
 		return dataFile;
 	}
 
