@@ -21,7 +21,7 @@
 	</managed-bean>
 		<managed-bean>
 			<managed-bean-name>dM</managed-bean-name>
-			<managed-bean-class>ch.lukasmartinelli.redditclone.beans.DataManager</managed-bean-class>
+			<managed-bean-class>ch.lukasmartinelli.redditclone.SerializationData.DataManager</managed-bean-class>
 			<managed-bean-scope>application</managed-bean-scope>
 		</managed-bean>
 	<navigation-rule>

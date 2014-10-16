@@ -1,0 +1,29 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+
+	xmlns:cc="http://xmlns.jcp.org/jsf/composite"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:pr="http://primefaces.org/ui"
+	xmlns:c="http://java.sun.com/jsp/jstl/core"
+	xmlns:my="http://java.sun.com/jsf/composite/widgets" >
+	<cc:interface>
+		<cc:attribute name="value" required="true"/>
+	</cc:interface>
+	<cc:implementation>
+		<div>
+				<h:outputLabel value="adsfdas" align="right"/>
+				<br/>
+				<h:outputLabel value="1.Ebene" />
+				<br/>
+					<h:panelGroup rendered="#{cc.attrs.value.hasSubComments}">
+						<pr:dataGrid var="ce" value="#{cc.attrs.value.subComments}" 
+						columns="1" layout="grid" rows="7">
+	        				<h:outputLabel value="SubComments..."></h:outputLabel>
+	        			      
+	        				     	
+		        		</pr:dataGrid>
+					</h:panelGroup>
+			</div>
+	</cc:implementation>
+</ui:composition>

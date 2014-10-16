@@ -2,6 +2,7 @@ package ch.lukasmartinelli.redditclone;
 
 import java.io.Serializable;
 import java.util.ArrayList;
+import java.util.Date;
 
 public class Comment  implements Serializable {
 	/**
@@ -9,7 +10,9 @@ public class Comment  implements Serializable {
 	 */
 	private static final long serialVersionUID = 1L;
 	private String text;
-	private ArrayList<Comment> comments = new ArrayList<>();
+	private User author;
+	private Date creationTime;
+	private ArrayList<Comment> subComments = new ArrayList<>();
 
 	public void setText(String text){
 		this.text = text;	
@@ -20,15 +23,31 @@ public class Comment  implements Serializable {
 	}
 	
 	public void addSubComment(Comment comment){
-		comments.add(comment);
-	}
-	
-	public Comment getSubComment(Comment comment){	
-		return comments.get(comments.indexOf(comment));
+		subComments.add(comment);
 	}
 	
 	public ArrayList<Comment> getSubComments(){
-		return comments;
+		return subComments;
+	}
+	public boolean getHasSubComments() {
+		if(subComments==null) return false;
+		return (subComments.size() > 0);
+	}
+
+	public User getAuthor() {
+		return author;
+	}
+
+	public void setAuthor(User author) {
+		this.author = author;
+	}
+
+	public Date getCreationTime() {
+		return creationTime;
+	}
+
+	public void setCreationTime(Date creationTime) {
+		this.creationTime = creationTime;
 	}
 
 }

@@ -1,11 +1,11 @@
 package ch.lukasmartinelli.redditclone;
 
-import java.io.Serializable;
+
 
 import javax.faces.context.FacesContext;
 import javax.servlet.http.HttpSession;
 
-public class LoginController implements Serializable {
+public class LoginController {
 	/**
 	 * 
 	 */
