@@ -1,6 +1,6 @@
 package ch.lukasmartinelli.redditclone.beans;
 
-import ch.lukasmartinelli.redditclone.Reddit;
+import ch.lukasmartinelli.redditclone.bl.reddit.Reddit;
 
 public class RedditViewBean {
 	private int id;

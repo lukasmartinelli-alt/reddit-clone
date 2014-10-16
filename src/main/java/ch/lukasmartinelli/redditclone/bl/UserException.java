@@ -1,4 +1,4 @@
-package ch.lukasmartinelli.redditclone;
+package ch.lukasmartinelli.redditclone.bl;
 
 public class UserException extends Exception {
 

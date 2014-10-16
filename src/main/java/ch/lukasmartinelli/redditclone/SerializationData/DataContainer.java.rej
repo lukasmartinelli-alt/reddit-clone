@@ -1,9 +1,0 @@
-diff a/src/main/java/ch/lukasmartinelli/redditclone/SerializationData/DataContainer.java b/src/main/java/ch/lukasmartinelli/redditclone/SerializationData/DataContainer.java	(rejected hunks)
-@@ -9,7 +9,6 @@
- import ch.lukasmartinelli.redditclone.LoginController;
- import ch.lukasmartinelli.redditclone.Reddit;
- import ch.lukasmartinelli.redditclone.RedditRepository;
--//All data you need restored after a server restart you can put here in
- 
- /**
-  * Backing store for all data that needs to be persisted. Is managed by the

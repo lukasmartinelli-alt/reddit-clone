@@ -1,14 +1,13 @@
-package ch.lukasmartinelli.redditclone.SerializationData;
+package ch.lukasmartinelli.redditclone.dl;
 import java.io.Serializable;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.Date;
 
-import ch.lukasmartinelli.redditclone.Comment;
-import ch.lukasmartinelli.redditclone.LoginController;
-import ch.lukasmartinelli.redditclone.Reddit;
-import ch.lukasmartinelli.redditclone.RedditRepository;
-//All data you need restored after a server restart you can put here in
+import ch.lukasmartinelli.redditclone.beans.LoginController;
+import ch.lukasmartinelli.redditclone.bl.reddit.Comment;
+import ch.lukasmartinelli.redditclone.bl.reddit.Reddit;
+import ch.lukasmartinelli.redditclone.bl.reddit.RedditRepository;
 
 /**
  * Backing store for all data that needs to be persisted. Is managed by the

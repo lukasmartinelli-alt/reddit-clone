@@ -1,10 +1,10 @@
-package ch.lukasmartinelli.redditclone.vote;
+package ch.lukasmartinelli.redditclone.bl.reddit;
 
 import java.io.Serializable;
 import java.util.ArrayList;
 
-import ch.lukasmartinelli.redditclone.LoginController;
-import ch.lukasmartinelli.redditclone.User;
+import ch.lukasmartinelli.redditclone.beans.LoginController;
+import ch.lukasmartinelli.redditclone.bl.User;
 
 public class VoteController implements Serializable {
 

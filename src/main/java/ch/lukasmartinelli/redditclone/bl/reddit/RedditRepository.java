@@ -1,4 +1,4 @@
-package ch.lukasmartinelli.redditclone;
+package ch.lukasmartinelli.redditclone.bl.reddit;
 
 import java.io.Serializable;
 import java.net.URL;

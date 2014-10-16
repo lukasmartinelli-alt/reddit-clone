@@ -1,9 +1,13 @@
-package ch.lukasmartinelli.redditclone;
+package ch.lukasmartinelli.redditclone.beans;
 
 
 
 import javax.faces.context.FacesContext;
 import javax.servlet.http.HttpSession;
+
+import ch.lukasmartinelli.redditclone.bl.User;
+import ch.lukasmartinelli.redditclone.bl.UserRepository;
+import ch.lukasmartinelli.redditclone.bl.UserSessionRepository;
 
 public class LoginController {
 	/**

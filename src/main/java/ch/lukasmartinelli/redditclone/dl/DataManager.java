@@ -1,4 +1,4 @@
-package ch.lukasmartinelli.redditclone.SerializationData;
+package ch.lukasmartinelli.redditclone.dl;
 
 import java.io.File;
 import java.io.FileInputStream;

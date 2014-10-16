@@ -1,4 +1,4 @@
-package ch.lukasmartinelli.redditclone;
+package ch.lukasmartinelli.redditclone.bl;
 
 import java.io.Serializable;
 import java.util.ArrayList;

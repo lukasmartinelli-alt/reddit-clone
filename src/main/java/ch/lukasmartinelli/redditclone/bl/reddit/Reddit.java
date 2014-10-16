@@ -1,4 +1,4 @@
-package ch.lukasmartinelli.redditclone;
+package ch.lukasmartinelli.redditclone.bl.reddit;
 
 import java.io.Serializable;
 import java.net.URL;
@@ -6,7 +6,10 @@ import java.util.ArrayList;
 import java.util.Date;
 
 
-import ch.lukasmartinelli.redditclone.vote.VoteController;
+
+
+
+import ch.lukasmartinelli.redditclone.bl.User;
 
 
 public class Reddit implements Serializable {

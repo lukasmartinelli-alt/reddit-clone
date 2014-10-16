@@ -1,9 +1,9 @@
-package ch.lukasmartinelli.redditclone.vote;
+package ch.lukasmartinelli.redditclone.bl.reddit;
 
 import java.io.Serializable;
 import java.util.Date;
 
-import ch.lukasmartinelli.redditclone.User;
+import ch.lukasmartinelli.redditclone.bl.User;
 
 public class Vote implements Serializable {
 	private Date clickTime;
