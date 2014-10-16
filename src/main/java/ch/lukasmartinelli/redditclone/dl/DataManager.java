@@ -12,60 +12,47 @@ import java.util.Timer;
 import java.util.TimerTask;
 
 public class DataManager {
-	public DataContainer data;
-	private Timer timer = new Timer();
-	private TimerTask timerTask;
+	private static DataContainer data;
 
-	public DataManager() throws ClassNotFoundException, IOException {
+	public static DataContainer getData() {
+		return data;
+	}
+	public static void setData(DataContainer d) {
+		data = d;
+	}
+
+	public static void deserializeX() throws ClassNotFoundException, IOException {
 		File dataFile = getDataFile();
 		System.out.println("Initialize dataManager with "
 				+ dataFile.getAbsolutePath());
 		if (!dataFile.exists()) {
-			data = DataContainer.getNew();
+			DataManager.data = DataContainer.getNew();
 		} else {
-			this.deserialize();
+			deserialize();
 		}
-		serializePeriodically();
 	}
 
-	private void serializePeriodically() {
-		timerTask = new java.util.TimerTask() {
-			@Override
-			public void run() {
-				try {
-					DataManager.this.serialize();
-					System.out.println("Serialize dataContainer");
-				} catch (IOException e) {
-					System.out.println(e.getMessage());
-				}
-			}
-		};
-		timer.scheduleAtFixedRate(timerTask, 1000, 5000);
-	}
 
-	public DataContainer getData() {
-		return data;
-	}
-
-	private File getDataFile() throws UnsupportedEncodingException {
+	private static File getDataFile() throws UnsupportedEncodingException {
 		File tmpDir = new File(System.getProperty("java.io.tmpdir"));
 		File dataFile = new File(tmpDir, "container.ser");
 		return dataFile;
 	}
 
-	private void serialize() throws IOException {
+	public static void serializeX() throws IOException {
 		try (FileOutputStream fileOut = new FileOutputStream(getDataFile())) {
 			try (ObjectOutputStream out = new ObjectOutputStream(fileOut)) {
-				out.writeObject(data);
+				out.writeObject(DataManager.data);
 			}
 		}
 	}
 
-	private void deserialize() throws ClassNotFoundException, IOException {
-		try (FileInputStream fileIn = new FileInputStream(getDataFile())) {
-			try (ObjectInputStream in = new ObjectInputStream(fileIn)) {
-				data = (DataContainer) in.readObject();
+	private static void deserialize() throws ClassNotFoundException, IOException {
+			try (FileInputStream fileIn = new FileInputStream(getDataFile())) {
+				try (ObjectInputStream in = new ObjectInputStream(fileIn)) {
+					DataManager.data = (DataContainer) in.readObject();
+				}
 			}
-		}
+		
 	}
 }

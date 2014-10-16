@@ -6,12 +6,12 @@
     version="2.2">
 	<managed-bean>
 		<managed-bean-name>loginController</managed-bean-name>
-		<managed-bean-class>ch.lukasmartinelli.redditclone.LoginController</managed-bean-class>
+		<managed-bean-class>ch.lukasmartinelli.redditclone.beans.LoginController</managed-bean-class>
 		<managed-bean-scope>session</managed-bean-scope>
 	</managed-bean>
 		<managed-bean>
 			<managed-bean-name>dM</managed-bean-name>
-			<managed-bean-class>ch.lukasmartinelli.redditclone.SerializationData.DataManager</managed-bean-class>
+			<managed-bean-class>ch.lukasmartinelli.redditclone.dl.DataManager</managed-bean-class>
 			<managed-bean-scope>application</managed-bean-scope>
 		</managed-bean>
 		<managed-bean>
@@ -27,4 +27,24 @@
 			<to-view-id>/welcome.xhtml</to-view-id>
 		</navigation-case>
 	</navigation-rule>
+	   <application>
+      <!-- Application Startup -->
+      <system-event-listener>
+         <system-event-listener-class>
+            ch.lukasmartinelli.redditclone.dl.ApplicationEvents
+         </system-event-listener-class>
+         <system-event-class>
+            javax.faces.event.PostConstructApplicationEvent
+         </system-event-class>    					
+      </system-event-listener> 
+      <!-- Before Application is to shut down -->
+      <system-event-listener>
+         <system-event-listener-class>
+            ch.lukasmartinelli.redditclone.dl.ApplicationEvents
+         </system-event-listener-class>
+         <system-event-class>
+            javax.faces.event.PreDestroyApplicationEvent
+         </system-event-class>    					
+      </system-event-listener>
+   </application>
 </faces-config>
