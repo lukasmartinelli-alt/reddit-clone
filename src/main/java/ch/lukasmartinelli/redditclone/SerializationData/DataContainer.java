@@ -1,5 +1,4 @@
 package ch.lukasmartinelli.redditclone.SerializationData;
-
 import java.io.Serializable;
 import java.net.URL;
 import java.util.ArrayList;
@@ -9,6 +8,7 @@ import ch.lukasmartinelli.redditclone.Comment;
 import ch.lukasmartinelli.redditclone.LoginController;
 import ch.lukasmartinelli.redditclone.Reddit;
 import ch.lukasmartinelli.redditclone.RedditRepository;
+//All data you need restored after a server restart you can put here in
 
 /**
  * Backing store for all data that needs to be persisted. Is managed by the
