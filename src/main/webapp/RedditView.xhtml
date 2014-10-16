@@ -10,16 +10,13 @@
 	xmlns:pr="http://primefaces.org/ui" >
 	<ui:define name="title">Reddit Comments</ui:define>
 	<ui:define name="content">
+	<f:metadata>
+        <f:viewParam name="id" value="#{redditViewBean.id}" />
+    </f:metadata>
 		<div class="new-reddit">
 		<h1>Comments</h1>
 			<h:form>
-				<pr:dataGrid var="com" value="#{dM.data.redditRepo.reddits[0].comments}" 
-			columns="1" layout="grid" rows="7">
-        
-        			<my:commentEntry  value="#{com}"/>
-        
-        
-        		</pr:dataGrid>
+				<h:outputLabel value="#{redditViewBean.id}"/>
 			</h:form>
 		</div>
 	</ui:define>

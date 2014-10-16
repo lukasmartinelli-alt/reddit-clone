@@ -1,33 +1,38 @@
 <ui:composition xmlns="http://www.w3.org/1999/xhtml"
-
 	xmlns:cc="http://xmlns.jcp.org/jsf/composite"
 	xmlns:h="http://java.sun.com/jsf/html"
-	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
 	xmlns:f="http://java.sun.com/jsf/core"
-	xmlns:pr="http://primefaces.org/ui" >
+	xmlns:pr="http://primefaces.org/ui"
+	xmlns:ui="http://java.sun.com/jsf/facelets">
 	<cc:interface>
-		<cc:attribute name="value"/>
+		<cc:attribute name="value" />
 	</cc:interface>
 	<cc:implementation>
+		<h:form>
+
+		</h:form>
 
 		<div class="reddit">
-		<h:panelGroup id="voteData">
-			<div class="votebuttons" title="#{cc.attrs.value.voteController.votesCount} Votes">
-				<h:commandLink action="#{cc.attrs.value.voteController.upVote}">
-					<h:graphicImage styleClass='upvote #{cc.attrs.value.voteController.hasCurrentUserUpvoted() ? "active" : ""}'
-						value="resources/images/caret-top.svg" />
-						<f:ajax render="@this voteData"/>
-				</h:commandLink>
-					<span  class="vote_sum">#{cc.attrs.value.voteController.votesCount}</span>
-				<h:commandLink action="#{cc.attrs.value.voteController.downVote}">
-						<h:graphicImage styleClass='downvote #{cc.attrs.value.voteController.hasCurrentUserDownvoted() ? "active" : ""}'
+			<h:panelGroup id="voteData">
+				<div class="votebuttons"
+					title="#{cc.attrs.value.voteController.votesCount} Votes">
+					<h:commandLink action="#{cc.attrs.value.voteController.upVote}">
+						<h:graphicImage
+							styleClass='upvote #{cc.attrs.value.voteController.hasCurrentUserUpvoted() ? "active" : ""}'
+							value="resources/images/caret-top.svg" />
+						<f:ajax render="@this voteData" />
+					</h:commandLink>
+					<span class="vote_sum">#{cc.attrs.value.voteController.votesCount}</span>
+					<h:commandLink action="#{cc.attrs.value.voteController.downVote}">
+						<h:graphicImage
+							styleClass='downvote #{cc.attrs.value.voteController.hasCurrentUserDownvoted() ? "active" : ""}'
 							value="resources/images/caret-bottom.svg" />
-						<f:ajax render="@this voteData"/>
-				</h:commandLink>
-				
+						<f:ajax render="@this voteData" />
+					</h:commandLink>
 
-			</div>
-		</h:panelGroup>
+
+				</div>
+			</h:panelGroup>
 			<div class="reddit-wrapper">
 				<h:outputLink value="#{cc.attrs.value.link}">
 					<h2>#{cc.attrs.value.title}</h2>
@@ -37,12 +42,15 @@
 					#{cc.attrs.value.createTime} <a href="/link/to/author/">#{cc.attrs.value.user}</a>
 				</p>
 				<p>
-					<em><a href="/link/to/comments/">#{cc.attrs.value.commentsCount}
-							comments</a></em>
+					<em> <h:link outcome="RedditView.xhtml">
+							<h:outputText value="#{cc.attrs.value.commentsCount} comments"></h:outputText>
+							<f:param name="id" value="#{cc.attrs.value.id}"></f:param>
+						</h:link>
+						</em>
 				</p>
 			</div>
 		</div>
-		<pr:poll update="@this voteData" interval="10"/>
+		<pr:poll update="@this voteData" interval="10" />
 
 	</cc:implementation>
 </ui:composition>

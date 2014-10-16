@@ -14,6 +14,7 @@ public class Reddit implements Serializable {
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
+	private int id;
 	private String title;
 	private User user;
 	private URL link;
@@ -71,6 +72,14 @@ public class Reddit implements Serializable {
 	}
 	public VoteController getVoteController() {
 		return voteController;
+	}
+
+	public int getId() {
+		return id;
+	}
+
+	public void setId(int id) {
+		this.id = id;
 	}
 
 

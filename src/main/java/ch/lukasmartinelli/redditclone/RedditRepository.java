@@ -18,5 +18,7 @@ public class RedditRepository implements Serializable {
 	public void setReddits(ArrayList<Reddit> r) {
 		reddits = r;
 	}
-	
+	public Reddit getRedditById(int id) {
+		return new Reddit();
+	}
 }
