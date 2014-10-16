@@ -1,63 +1,71 @@
 package ch.lukasmartinelli.redditclone.SerializationData;
 
+import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
+import java.io.UnsupportedEncodingException;
+import java.net.URLDecoder;
 import java.util.Timer;
 import java.util.TimerTask;
 
 public class DataManager {
 	public DataContainer data;
-	//public String outFile = "C://temp//dataContainer.ser";
-	public String outFile = "C://temp//dataContainer.ser";
-	private Timer t = new Timer();
-	TimerTask tt;
-	public DataManager() {
-		try{
-			java.io.File f = new java.io.File(outFile);
-			System.out.println("Initialize dataManager with " + f.getAbsolutePath());
-			if(!f.exists()) {
-				//No DataContainer exists. Create example one.
-				data = DataContainer.getNew();
-			} else {
-				this.deserialize();
-			}
-		}catch(Exception ex) {
-			System.out.println(ex.getMessage());
+	private Timer timer = new Timer();
+	private TimerTask timerTask;
+
+	public DataManager() throws ClassNotFoundException, IOException {
+		File dataFile = getDataFile();
+		System.out.println("Initialize dataManager with "
+				+ dataFile.getAbsolutePath());
+		if (!dataFile.exists()) {
+			data = DataContainer.getNew();
+		} else {
+			this.deserialize();
 		}
-		tt = new java.util.TimerTask() {
-			 @Override
-			  public void run() {
-				    try {
-						DataManager.this.serialize();
-						System.out.println("Serialize dataContainer");
-					} catch (IOException e) {
-						System.out.println(e.getMessage());
-					}
-			  }
+		serializePeriodically();
+	}
+
+	private void serializePeriodically() {
+		timerTask = new java.util.TimerTask() {
+			@Override
+			public void run() {
+				try {
+					DataManager.this.serialize();
+					System.out.println("Serialize dataContainer");
+				} catch (IOException e) {
+					System.out.println(e.getMessage());
+				}
+			}
 		};
-		//Serialize all 5s
-		t.scheduleAtFixedRate(tt,1000,5000);
-		
+		timer.scheduleAtFixedRate(timerTask, 1000, 5000);
 	}
-	private void serialize() throws IOException {
-        FileOutputStream fileOut =
-        new FileOutputStream(outFile);
-        ObjectOutputStream out = new ObjectOutputStream(fileOut);
-        out.writeObject(data);
-        out.close();
-        fileOut.close();
-	}
-	private void deserialize() throws ClassNotFoundException, IOException {
-        FileInputStream fileIn = new FileInputStream(outFile);
-        ObjectInputStream in = new ObjectInputStream(fileIn);
-        data = (DataContainer) in.readObject();
-        in.close();
-        fileIn.close();
-	}
+
 	public DataContainer getData() {
 		return data;
+	}
+
+	private File getDataFile() throws UnsupportedEncodingException {
+		File tmpDir = new File(System.getProperty("java.io.tmpdir"));
+		File dataFile = new File(tmpDir, "container.ser");
+		return dataFile;
+	}
+
+	private void serialize() throws IOException {
+		try (FileOutputStream fileOut = new FileOutputStream(getDataFile())) {
+			try (ObjectOutputStream out = new ObjectOutputStream(fileOut)) {
+				out.writeObject(data);
+			}
+		}
+	}
+
+	private void deserialize() throws ClassNotFoundException, IOException {
+		try (FileInputStream fileIn = new FileInputStream(getDataFile())) {
+			try (ObjectInputStream in = new ObjectInputStream(fileIn)) {
+				data = (DataContainer) in.readObject();
+			}
+		}
 	}
 }
