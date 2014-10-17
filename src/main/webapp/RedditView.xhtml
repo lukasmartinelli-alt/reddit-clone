@@ -14,9 +14,13 @@
         <f:viewParam name="id" value="#{redditViewBean.id}" />
     </f:metadata>
 		<div class="new-reddit">
-		<h1>Comments</h1>
-			<h:form>
-				<h:outputLabel value="#{redditViewBean.id}"/>
+		<h:form>
+		<h2>Comments</h2>
+			<my:redditEntry value="#{redditViewBean.reddit}"/>
+				<c:if test="#{redditViewBean.hasComments()}"> 
+					<my:commentEntry value="#{redditViewBean.reddit.comments[0]}" />
+				</c:if>
+
 			</h:form>
 		</div>
 	</ui:define>

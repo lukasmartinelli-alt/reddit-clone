@@ -44,6 +44,7 @@ public class DataContainer implements Serializable {
 		Comment c = getCommentTree(u);
 		for (int i = 0; i < 30; i++) {
 			Reddit r = new Reddit();
+			r.setId(i);
 			r.setTitle("Andreas Rüst geht gerne ins Schwulepuff!");
 			try {
 				r.setLink(new URL("http://www.20min.ch"));
@@ -55,6 +56,7 @@ public class DataContainer implements Serializable {
 			reddits.add(r);
 
 			r = new Reddit();
+			r.setId(i + 30);
 			r.setTitle("Dies ist ein Test");
 			try {
 				r.setLink(new URL("http://www.bluewin.ch"));

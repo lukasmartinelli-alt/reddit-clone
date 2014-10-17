@@ -11,19 +11,24 @@
 		<cc:attribute name="value" required="true"/>
 	</cc:interface>
 	<cc:implementation>
-		<div>
-				<h:outputLabel value="adsfdas" align="right"/>
+		<h:panelGroup style="border-left-style: solid; border-top-color: #C0C0C0; border-top-style: solid">
+		<div width="600rem">
+				<div align="right">
+					<h:outputLabel value="#{cc.attrs.value.creationTime} : #{cc.attrs.value.author.name}" align="right" style="font-size: x-small"/>
+				</div>
+
+				<h:outputLabel value="#{cc.attrs.value.text}" />
 				<br/>
-				<h:outputLabel value="1.Ebene" />
-				<br/>
-					<h:panelGroup rendered="#{cc.attrs.value.hasSubComments}">
-						<pr:dataGrid var="ce" value="#{cc.attrs.value.subComments}" 
-						columns="1" layout="grid" rows="7">
-	        				<h:outputLabel value="SubComments..."></h:outputLabel>
-	        			      
-	        				     	
-		        		</pr:dataGrid>
-					</h:panelGroup>
+				<c:if test="#{cc.attrs.value.hasSubComments}">
+	
+							<pr:dataGrid var="re" value="#{cc.attrs.value.subComments}" 
+							columns="1" layout="grid" rows="7">
+		        			      <my:commentEntry value="#{re}" />
+		        				     	
+			        		</pr:dataGrid>
+	
+				</c:if>
 			</div>
+			</h:panelGroup>
 	</cc:implementation>
 </ui:composition>

@@ -31,10 +31,6 @@ public class Comment  implements Serializable {
 	public ArrayList<Comment> getSubComments(){
 		return subComments;
 	}
-	public boolean getHasSubComments() {
-		if(subComments==null) return false;
-		return (subComments.size() > 0);
-	}
 
 	public User getAuthor() {
 		return author;
@@ -50,6 +46,10 @@ public class Comment  implements Serializable {
 
 	public void setCreationTime(Date creationTime) {
 		this.creationTime = creationTime;
+	}
+	public boolean getHasSubComments() {
+		if(subComments == null) return false;
+		return subComments.size() > 0;
 	}
 
 }

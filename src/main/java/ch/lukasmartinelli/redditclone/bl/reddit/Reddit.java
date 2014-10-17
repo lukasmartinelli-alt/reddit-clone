@@ -48,7 +48,9 @@ public class Reddit implements Serializable {
 	public void setUser(User user) {
 		this.user = user;
 	}
-	
+	public int getCommentsCount() {
+		return comments.size();
+	}
 
 	public URL getLink() {
 		return link;
@@ -67,9 +69,7 @@ public class Reddit implements Serializable {
 	public void addComment(Comment comment){
 		comments.add(comment);
 	}
-	public int getCommentsCount() {
-		return comments.size();
-	}
+
 	public ArrayList<Comment> getComments(){
 		return comments;
 	}

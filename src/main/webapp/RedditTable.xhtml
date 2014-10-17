@@ -13,7 +13,7 @@
 		<div class="new-reddit">
 		<h1>Entries</h1>
 			<h:form>
-			<pr:dataGrid var="re" value="#{dM.data.redditRepo.reddits}" columns="1" layout="grid"
+			<pr:dataGrid var="re" value="#{redditTableBean.reddits}" columns="1" layout="grid"
         rows="7" paginator="true"
         paginatorTemplate="{PreviousPageLink} {CurrentPageReport} {NextPageLink}" paginatorPosition="bottom" styleClass="borderless"
         paginatorAlwaysVisible="false" lazy="true">
