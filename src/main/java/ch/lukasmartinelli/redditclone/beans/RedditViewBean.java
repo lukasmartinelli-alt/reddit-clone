@@ -7,6 +7,35 @@ import ch.lukasmartinelli.redditclone.dl.DataManager;
 public class RedditViewBean {
 	private int id;
 	private Reddit reddit;
+	private String title;
+	private String link;
+	
+	public void setLink(String link){
+		this.link = link;
+	}
+	public String getLink(){
+		return link;
+	}
+	
+	public void setTitle(String title){
+		this.title = title;
+	}
+	public String getTitle(){
+		return title;
+	}
+	
+	public void save(){
+		reddit.setTitle(title);
+		reddit.setId(999999999);
+		//TODO: set all Reddit Attributs
+		DataManager.getData().reddits.add(reddit);
+		for(Reddit r: DataManager.getData().reddits) {
+			if(r.getId() == 999999999){
+				System.out.println("found reddit:" + r.getTitle());
+				break;
+			}
+		}
+	}
 	
 	public int getId() {
 		return id;
