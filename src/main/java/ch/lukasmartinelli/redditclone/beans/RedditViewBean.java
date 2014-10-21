@@ -1,5 +1,6 @@
 package ch.lukasmartinelli.redditclone.beans;
 
+
 import ch.lukasmartinelli.redditclone.bl.reddit.Comment;
 import ch.lukasmartinelli.redditclone.bl.reddit.Reddit;
 import ch.lukasmartinelli.redditclone.dl.DataManager;
@@ -25,16 +26,13 @@ public class RedditViewBean {
 	}
 	
 	public void save(){
+		reddit = new Reddit();
 		reddit.setTitle(title);
-		reddit.setId(999999999);
+		reddit.setId(12345);
 		//TODO: set all Reddit Attributs
 		DataManager.getData().reddits.add(reddit);
-		for(Reddit r: DataManager.getData().reddits) {
-			if(r.getId() == 999999999){
-				System.out.println("found reddit:" + r.getTitle());
-				break;
-			}
-		}
+		
+		System.out.println("Titel: " + reddit.getTitle());
 	}
 	
 	public int getId() {
