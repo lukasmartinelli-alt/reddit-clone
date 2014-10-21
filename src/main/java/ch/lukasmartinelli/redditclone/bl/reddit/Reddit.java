@@ -9,6 +9,8 @@ import java.util.Date;
 
 
 
+
+import ch.lukasmartinelli.redditclone.bl.TimeAgoCalculator;
 import ch.lukasmartinelli.redditclone.bl.User;
 
 
@@ -61,6 +63,11 @@ public class Reddit implements Serializable {
 
 	public Date getCreateTime() {
 		return createTime;
+	}
+	public String getTimeAgo() {
+		TimeAgoCalculator tac = new TimeAgoCalculator();
+		String timeAgo = "posted " + tac.getTimeAgo(this.getCreateTime()) + " ago by ";
+		return timeAgo;
 	}
 	public void setCreateTime(Date createTime) {
 		this.createTime = createTime;
