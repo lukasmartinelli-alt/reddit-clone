@@ -11,24 +11,40 @@
 		<cc:attribute name="value" required="true"/>
 	</cc:interface>
 	<cc:implementation>
-		<h:panelGroup style="border-left-style: solid; border-top-color: #C0C0C0; border-top-style: solid">
-		<div width="600rem">
-				<div align="right">
+		<div Class="comment">
+				<div class="commentauthor">
 					<h:outputLabel value="#{cc.attrs.value.creationTime} : #{cc.attrs.value.author.name}" align="right" style="font-size: x-small"/>
 				</div>
-
-				<h:outputLabel value="#{cc.attrs.value.text}" />
-				<br/>
-				<c:if test="#{cc.attrs.value.hasSubComments}">
-	
+				<div class="commenttext">
+					<h:outputLabel value="#{cc.attrs.value.text}" />
+				</div>
+			<h:form>
+				<h:panelGroup id="commentNew">
+					<h:panelGroup rendered="#{newCommentBean.activ}">
+					<h:form>
+						<pr:inputTextarea rows="2" cols="30" counter="display" maxlength="100" 
+						counterTemplate="{0} characters remaining." autoResize="true" value="#{newCommentBean.text}"/>
+						<h:outputText id="display" />
+						<h:commandButton ajax="true" value="add" action="#{newCommentBean.submit(cc.attrs.value)}"/>
+					</h:form>
+					</h:panelGroup>
+					<h:panelGroup rendered="#{!newCommentBean.activ}">
+						<h:commandLink>
+							<h:outputText value="Antworten"/>
+							<f:ajax render="@this commentNew" listener="#{newCommentBean.changeActiv}" />
+						</h:commandLink>
+					</h:panelGroup>
+				</h:panelGroup>
+			</h:form>
+			<c:if test="#{cc.attrs.value.hasSubComments}">
+					<div class="commentSub">
 							<pr:dataGrid var="re" value="#{cc.attrs.value.subComments}" 
 							columns="1" layout="grid" rows="7">
 		        			      <my:commentEntry value="#{re}" />
 		        				     	
 			        		</pr:dataGrid>
-	
+					</div>
 				</c:if>
 			</div>
-			</h:panelGroup>
 	</cc:implementation>
 </ui:composition>

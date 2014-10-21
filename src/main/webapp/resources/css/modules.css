@@ -47,6 +47,7 @@
 	padding: 1rem;
 	position: relative;
 	min-height: 15rem;
+	display:block;
 }
 
 .reddit .reddit-wrapper {
@@ -102,4 +103,28 @@
 .new-reddit input {
 	max-width: 56rem;
 	display: block;
+}
+/* ===COMMENTS=== */
+.commenttext {
+	align:left;
+}
+.commentauthor {
+	align:right;
+}
+.comment {
+
+	padding-left:5px;
+	padding-right:5px;
+	padding-top:5px;
+	padding-bottom:5px;
+	
+	border-width: thin;
+	border-style: solid;
+	border-color: black;
+	border-radius: 3px;
+	max-width:56rem;
+	
+	display:block;
+
+
 }

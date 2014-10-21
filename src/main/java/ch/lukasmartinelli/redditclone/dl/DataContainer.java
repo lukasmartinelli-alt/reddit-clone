@@ -45,7 +45,7 @@ public class DataContainer implements Serializable {
 		for (int i = 0; i < 30; i++) {
 			Reddit r = new Reddit();
 			r.setId(i);
-			r.setTitle("Andreas Rüst geht gerne ins Schwulepuff!");
+			r.setTitle("Dorfmarkt knackt Umsatzrekord");
 			try {
 				r.setLink(new URL("http://www.20min.ch"));
 			} catch (Exception e) {
