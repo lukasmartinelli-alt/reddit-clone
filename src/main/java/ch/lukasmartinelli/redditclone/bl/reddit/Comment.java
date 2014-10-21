@@ -15,6 +15,8 @@ public class Comment  implements Serializable {
 	private User author;
 	private Date creationTime;
 	private ArrayList<Comment> subComments = new ArrayList<>();
+	private VoteController voteController = new VoteController();
+	
 
 	public void setText(String text){
 		this.text = text;	
@@ -59,5 +61,10 @@ public class Comment  implements Serializable {
 		ret++;
 		return ret;
 	}
+
+	public VoteController getVoteController() {
+		return voteController;
+	}
+
 
 }

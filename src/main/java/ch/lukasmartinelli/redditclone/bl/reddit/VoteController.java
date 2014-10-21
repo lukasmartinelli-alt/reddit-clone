@@ -8,6 +8,10 @@ import ch.lukasmartinelli.redditclone.bl.User;
 
 public class VoteController implements Serializable {
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	private ArrayList<UpVote> upVotes = new ArrayList<>();
 	private ArrayList<DownVote> downVotes = new ArrayList<>();
 	

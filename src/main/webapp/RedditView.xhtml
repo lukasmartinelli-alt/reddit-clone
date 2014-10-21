@@ -13,6 +13,15 @@
 	<f:metadata>
         <f:viewParam name="id" value="#{redditViewBean.id}" />
     </f:metadata>
+    <!--  Severin -->
+    <my:commentEntry value="#{redditViewBean.reddit.comments[0]}" />
+    		<c:if test="#{not empty redditViewBean.reddit}">
+		<my:redditEntry value="#{redditViewBean.reddit}"/>
+		<hr />
+
+		
+
+		</c:if>	
     	<!-- START SAMPLE HTML -->
 			<my:redditEntry value="#{redditViewBean.reddit}"/>
 			<hr />
@@ -80,18 +89,6 @@
     	<br />
     	<br />
     	
-		<c:if test="#{not empty redditViewBean.reddit}">
-		<my:redditEntry value="#{redditViewBean.reddit}"/>
-		<hr />
-		<div class="comments">
-			<c:if test="#{redditViewBean.hasComments()}"> 
-				<c:forEach val="comment" items="#{redditViewBean.reddit.comments}">
-					<my:commentEntry value="#{comment}" />
-				</c:forEach>				
-			</c:if>
-		</div>
-		
-
-		</c:if>		
+	
 	</ui:define>
 </ui:composition>

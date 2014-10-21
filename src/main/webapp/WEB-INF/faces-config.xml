@@ -24,11 +24,6 @@
 			<managed-bean-class>ch.lukasmartinelli.redditclone.beans.RedditTableBean</managed-bean-class>
 			<managed-bean-scope>view</managed-bean-scope>
 		</managed-bean>
-		<managed-bean>
-			<managed-bean-name>newCommentBean</managed-bean-name>
-			<managed-bean-class>ch.lukasmartinelli.redditclone.beans.NewCommentBean</managed-bean-class>
-			<managed-bean-scope>view</managed-bean-scope>
-		</managed-bean>
 	<navigation-rule>
 		<display-name>login.xhtml</display-name>
 		<from-view-id>/login.xhtml</from-view-id>

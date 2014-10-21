@@ -21,20 +21,10 @@ public class ApplicationEvents implements SystemEventListener{
 	public void processEvent(SystemEvent event) throws AbortProcessingException {
 		try{
 		      if(event instanceof PostConstructApplicationEvent){
-		    	  if(firstStart) {
 			    	  DataManager.deserializeX();
-			          System.out.println("Application Started. PostConstructApplicationEvent occurred!");
-			          firstStart = false;
-		    	  }
-		      }
-		      if(event instanceof PreDestroyApplicationEvent){
-		    	  if(firstEnd) {
+		      }else if(event instanceof PreDestroyApplicationEvent){
 		    		  DataManager.serializeX();
-		    		  System.out.println("PreDestroyApplicationEvent occurred. Application is stopping.");
-		    		  firstEnd = false;
-		    	  }
-		       }
-		       System.out.println(DataManager.getData().reddits.size());
+		   		}
 		}catch (Exception ex) {
 			System.out.println(ex.getMessage());
 		}
