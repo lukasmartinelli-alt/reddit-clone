@@ -7,11 +7,11 @@ import java.util.Date;
 public class TimeAgoCalculator {
 	private ArrayList<Token> tokens = new ArrayList<>();
 	public TimeAgoCalculator() {
-		tokens.add(new Token("year",31536000));
-		tokens.add(new Token("month",2592000));
-		tokens.add(new Token("week",604800));
-		tokens.add(new Token("day",86400));
-		tokens.add(new Token("hour",13600));
+		tokens.add(new Token("year",60*60*24*7*365));
+		tokens.add(new Token("month",60*60*24*7*30));
+		tokens.add(new Token("week",60*60*24*7));
+		tokens.add(new Token("day",60*60*24));
+		tokens.add(new Token("hour",60 * 60));
 		tokens.add(new Token("minute",60));
 		tokens.add(new Token("second",1));
 	}

@@ -51,7 +51,11 @@ public class Reddit implements Serializable {
 		this.user = user;
 	}
 	public int getCommentsCount() {
-		return comments.size();
+		int ret = 0;
+		for(Comment c: comments) {
+			ret += c.getSubCommentsCount();
+		}
+		return ret;
 	}
 
 	public URL getLink() {
@@ -64,11 +68,7 @@ public class Reddit implements Serializable {
 	public Date getCreateTime() {
 		return createTime;
 	}
-	public String getTimeAgo() {
-		TimeAgoCalculator tac = new TimeAgoCalculator();
-		String timeAgo = "posted " + tac.getTimeAgo(this.getCreateTime()) + " ago by ";
-		return timeAgo;
-	}
+
 	public void setCreateTime(Date createTime) {
 		this.createTime = createTime;
 	}
@@ -76,6 +76,7 @@ public class Reddit implements Serializable {
 	public void addComment(Comment comment){
 		comments.add(comment);
 	}
+	
 
 	public ArrayList<Comment> getComments(){
 		return comments;

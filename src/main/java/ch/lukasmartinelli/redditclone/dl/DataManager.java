@@ -29,6 +29,9 @@ public class DataManager {
 			DataManager.data = DataContainer.getNew();
 		} else {
 			deserialize();
+			if(DataManager.data == null) {
+				DataManager.data = DataContainer.getNew();
+			}
 		}
 	}
 

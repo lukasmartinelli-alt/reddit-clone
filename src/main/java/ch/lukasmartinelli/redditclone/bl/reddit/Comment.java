@@ -51,5 +51,13 @@ public class Comment  implements Serializable {
 		if(subComments == null) return false;
 		return subComments.size() > 0;
 	}
+	public int getSubCommentsCount() {
+		int ret = 0;
+		for(Comment c: subComments) {
+			ret += c.getSubCommentsCount();
+		}
+		ret++;
+		return ret;
+	}
 
 }

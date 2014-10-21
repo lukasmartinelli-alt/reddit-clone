@@ -6,6 +6,10 @@ import ch.lukasmartinelli.redditclone.bl.User;
 
 
 public class DownVote extends Vote {
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	public DownVote(Date clickTime, User user) {
 		super(clickTime, user);
 	}

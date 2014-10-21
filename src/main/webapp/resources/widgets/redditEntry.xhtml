@@ -4,8 +4,8 @@
 	xmlns:f="http://java.sun.com/jsf/core"
 	xmlns:pr="http://primefaces.org/ui"
 	xmlns:ui="http://java.sun.com/jsf/facelets">
-	<cc:interface>
-		<cc:attribute name="value" />
+	<cc:interface componentType="redditEntry">
+		<cc:attribute name="value"  />
 	</cc:interface>
 	<cc:implementation>
 		<h:form>
@@ -14,17 +14,17 @@
 		<div class="reddit">
 			<h:panelGroup id="voteData">
 				<div class="votebuttons"
-					title="#{cc.attrs.value.voteController.votesCount} Votes">
-					<h:commandLink action="#{cc.attrs.value.voteController.upVote}">
+					title="#{cc.reddit.voteController.votesCount} Votes">
+					<h:commandLink action="#{cc.reddit.voteController.upVote}">
 						<h:graphicImage
-							styleClass='upvote #{cc.attrs.value.voteController.hasCurrentUserUpvoted() ? "active" : ""}'
+							styleClass='upvote #{cc.reddit.voteController.hasCurrentUserUpvoted() ? "active" : ""}'
 							value="resources/images/caret-top.svg" />
 						<f:ajax render="@this voteData" />
 					</h:commandLink>
-					<span class="vote_sum">#{cc.attrs.value.voteController.votesCount}</span>
-					<h:commandLink action="#{cc.attrs.value.voteController.downVote}">
+					<span class="vote_sum">#{cc.reddit.voteController.votesCount}</span>
+					<h:commandLink action="#{cc.reddit.voteController.downVote}">
 						<h:graphicImage
-							styleClass='downvote #{cc.attrs.value.voteController.hasCurrentUserDownvoted() ? "active" : ""}'
+							styleClass='downvote #{cc.reddit.voteController.hasCurrentUserDownvoted() ? "active" : ""}'
 							value="resources/images/caret-bottom.svg" />
 						<f:ajax render="@this voteData" />
 					</h:commandLink>
@@ -33,17 +33,17 @@
 				</div>
 			</h:panelGroup>
 			<div class="reddit-wrapper">
-				<h:outputLink value="#{cc.attrs.value.link}">
-					<h2>#{cc.attrs.value.title}</h2>
+				<h:outputLink value="#{cc.reddit.link}">
+					<h2>#{cc.reddit.title}</h2>
 				</h:outputLink>
 
 				<p>
-					#{cc.attrs.value.createTime} <a href="/link/to/author/">#{cc.attrs.value.user.name}</a>
+					#{cc.timeAgo} <a href="/link/to/author/">#{cc.reddit.user.name}</a>
 				</p>
 				<p>
 					<em> <h:link outcome="RedditView.xhtml">
-							<h:outputText value="#{cc.attrs.value.commentsCount} comments"></h:outputText>
-							<f:param name="id" value="#{cc.attrs.value.id}"></f:param>
+							<h:outputText value="#{cc.reddit.commentsCount} comments"></h:outputText>
+							<f:param name="id" value="#{cc.reddit.id}"></f:param>
 						</h:link>
 						</em>
 				</p>
