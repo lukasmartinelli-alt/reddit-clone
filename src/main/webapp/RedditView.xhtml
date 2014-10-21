@@ -73,22 +73,25 @@
 			</div>
 
     	<!-- END SAMPLE HTML -->    
+    	<br />
+    	<br />
+    	<br />
+    	<br />
+    	<br />
+    	<br />
     	
-    	<!--  
-		<h:form>
-			<h2>Reddit Comments</h2>
-			<c:if test="#{not empty redditViewBean.reddit}">
-			<div class="new-reddit">
-				<my:redditEntry value="#{redditViewBean.reddit}"/>
-			</div>
+		<c:if test="#{not empty redditViewBean.reddit}">
+		<my:redditEntry value="#{redditViewBean.reddit}"/>
+		<hr />
+		<div class="comments">
 			<c:if test="#{redditViewBean.hasComments()}"> 
-				<my:commentEntry value="#{redditViewBean.reddit.comments[0]}" />
+				<c:forEach val="comment" items="#{redditViewBean.reddit.comments}">
+					<my:commentEntry value="#{comment}" />
+				</c:forEach>				
 			</c:if>
-
-	
-			</c:if>
-		</h:form>
-		-->
+		</div>
 		
+
+		</c:if>		
 	</ui:define>
 </ui:composition>

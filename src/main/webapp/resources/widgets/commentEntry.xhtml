@@ -12,39 +12,46 @@
 	</cc:interface>
 	<cc:implementation>
 		<div class="comment">
-				<div class="commentauthor">
-					<h:outputLabel value="#{cc.attrs.value.creationTime} : #{cc.attrs.value.author.name}" align="right" />
-				</div>
-				<div class="commenttext">
-					<h:outputLabel value="#{cc.attrs.value.text}" />
-				</div>
-			<h:form>
-				<h:panelGroup id="commentNew">
-					<h:panelGroup rendered="#{newCommentBean.activ}">
-					<h:form>
-						<pr:inputTextarea rows="2" cols="30" counter="display" maxlength="100" 
-						counterTemplate="{0} characters remaining." autoResize="true" value="#{newCommentBean.text}"/>
-						<h:outputText id="display" />
-						<h:commandButton ajax="true" value="add" action="#{newCommentBean.submit(cc.attrs.value)}"/>
-					</h:form>
-					</h:panelGroup>
-					<h:panelGroup rendered="#{!newCommentBean.activ}">
-						<h:commandLink>
-							<h:outputText value="Antworten"/>
-							<f:ajax render="@this commentNew" listener="#{newCommentBean.changeActiv}" />
-						</h:commandLink>
-					</h:panelGroup>
-				</h:panelGroup>
-			</h:form>
-			<c:if test="#{cc.attrs.value.hasSubComments}">
-					<div class="commentSub">
-							<pr:dataGrid var="re" value="#{cc.attrs.value.subComments}" 
-							columns="1" layout="grid" rows="7">
-		        			      <my:commentEntry value="#{re}" />
-		        				     	
-			        		</pr:dataGrid>
-					</div>
-				</c:if>
+			<div class="votebuttons">
+				<h:graphicImage styleClass="upvote" value="resources/images/caret-top.svg" />
+				<span class="vote_sum">2</span>
+				<h:graphicImage styleClass="downvote"
+					value="resources/images/caret-bottom.svg" />
 			</div>
+			<div class="comment-wrapper">
+				<p class="comment-author">
+					<em>
+						<h:outputText value="#{cc.attrs.value.author.name}" />
+					</em>
+					<h:outputText value="#{cc.attrs.value.creationTime}" />
+				</p>
+				<p class="comment-text">
+					<h:outputText value="#{cc.attrs.value.text}" />
+				</p>
+				<h:form>
+					<h:panelGroup id="commentNew">
+						<h:panelGroup rendered="#{newCommentBean.activ}">
+						<h:form>
+							<pr:inputTextarea rows="2" cols="30" counter="display" maxlength="100" 
+							counterTemplate="{0} characters remaining." autoResize="true" value="#{newCommentBean.text}"/>
+							<h:outputText id="display" />
+							<h:commandButton styleClass="button button-primary" ajax="true" value="Comment" action="#{newCommentBean.submit(cc.attrs.value)}"/>
+						</h:form>
+						</h:panelGroup>
+						<h:panelGroup rendered="#{!newCommentBean.activ}">
+							<h:commandLink>
+								<h:outputText value="Antworten"/>
+								<f:ajax render="@this commentNew" listener="#{newCommentBean.changeActiv}" />
+							</h:commandLink>
+						</h:panelGroup>
+					</h:panelGroup>
+				</h:form>
+				<c:if test="#{cc.attrs.value.hasSubComments}">
+					<c:forEach var="subcomment" items="#{cc.attrs.value.subComments}">
+						<my:commentEntry value="#{subcomment}" />
+					</c:forEach>
+				</c:if>
+			</div>			
+		</div>
 	</cc:implementation>
 </ui:composition>
