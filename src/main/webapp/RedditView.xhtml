@@ -13,6 +13,68 @@
 	<f:metadata>
         <f:viewParam name="id" value="#{redditViewBean.id}" />
     </f:metadata>
+    	<!-- START SAMPLE HTML -->
+			<my:redditEntry value="#{redditViewBean.reddit}"/>
+			<hr />
+			<div class="comments">
+				<div class="comment">
+					<div class="votebuttons">
+						<h:graphicImage styleClass="upvote"
+					value="resources/images/caret-top.svg" />
+						<span class="vote_sum">15</span>
+						<h:graphicImage styleClass="downvote"
+							value="resources/images/caret-bottom.svg" />
+					</div>
+					<div class="comment-wrapper">
+						<p class="comment-author">
+							<em><a href="/link/to/author/">make-robots</a></em> 6 hours ago
+						</p>
+						<p class="comment-text">I would give him every luxury available to watch him batle spiders and mice.
+						I would pay him handsomely to spy on people for me. He would be the best wingman.</p>
+					</div>
+				</div>
+				<div class="comment">
+					<div class="votebuttons">
+						<h:graphicImage styleClass="upvote"
+					value="resources/images/caret-top.svg" />
+						<span class="vote_sum">2</span>
+						<h:graphicImage styleClass="downvote"
+							value="resources/images/caret-bottom.svg" />
+					</div>
+					<div class="comment-wrapper">
+						<p class="comment-author">
+							<em><a href="/link/to/author/">Roran01</a></em> 10 hours ago
+						</p>
+						<p class="comment-text">If he's the only 6 inch tall person in the world, you might wanna carefully monitor the fight,
+						it would be a shame to lose such a valuable creature just like that
+</p>
+						
+						
+							<!--  SUBCOMMENT -->
+							<div class="comment">
+								<div class="votebuttons">
+									<h:graphicImage styleClass="upvote"
+								value="resources/images/caret-top.svg" />
+									<span class="vote_sum">2</span>
+									<h:graphicImage styleClass="downvote"
+										value="resources/images/caret-bottom.svg" />
+								</div>
+								<div class="comment-wrapper">
+									<p class="comment-author">
+										<em><a href="/link/to/author/">liberaltexan</a></em> 3 hours ago
+									</p>
+									<p>I'd give you a tiny motherfuckin tank.</p>
+								</div>
+							</div>
+							<!--  SUBCOMMENt -->
+						
+					</div>
+				</div>
+			</div>
+
+    	<!-- END SAMPLE HTML -->    
+    	
+    	<!--  
 		<h:form>
 			<h2>Reddit Comments</h2>
 			<c:if test="#{not empty redditViewBean.reddit}">
@@ -26,6 +88,7 @@
 	
 			</c:if>
 		</h:form>
+		-->
 		
 	</ui:define>
 </ui:composition>

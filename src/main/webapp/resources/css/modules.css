@@ -46,13 +46,12 @@
 .reddit {
 	padding: 1rem;
 	position: relative;
-	min-height: 15rem;
 	display:block;
+	min-height: 5rem;
 }
 
 .reddit .reddit-wrapper {
 	padding-left: 6rem;
-	float: left;
 }
 
 .reddit .votebuttons {
@@ -60,13 +59,7 @@
 	z-index: 2;
 }
 
-@media(min-width: 100em) {
-	.reddit {
-		width: 49%;
-		margin-right: 1%;
-		float: left;
-	}
-}
+
 
 /* ===VOTE BUTTONS=== */
 .votebuttons {
@@ -105,26 +98,29 @@
 	display: block;
 }
 /* ===COMMENTS=== */
-.commenttext {
-	align:left;
+.comments {
+	clear: left;
+	padding-left: 6rem;
 }
-.commentauthor {
-	align:right;
-}
+
 .comment {
-
-	padding-left:5px;
-	padding-right:5px;
-	padding-top:5px;
-	padding-bottom:5px;
-	
-	border-width: thin;
-	border-style: solid;
-	border-color: black;
-	border-radius: 3px;
-	max-width:56rem;
-	
+	padding: 1rem;
+	position: relative;
 	display:block;
+	min-height: 5rem;
+	max-width:56rem;	
+	display:block;
+}
 
+.comment .votebuttons {
+	position: absolute;
+	z-index: 2;
+}
 
+.comment .comment-wrapper {
+	padding-left: 6rem;
+}
+
+.comment-text {
+	min-height: 5rem;
 }
