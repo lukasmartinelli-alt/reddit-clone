@@ -227,7 +227,7 @@ input[type="checkbox"]+p.help-block {
 /* ===BUTTONS=== */
 button, .button {
 	border: 0;
-	display: inline-block;
+	/*display: inline-block;*/
 	margin: 1rem;
 	margin-left: 0;
 	color: #fff;

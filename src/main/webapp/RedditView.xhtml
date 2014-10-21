@@ -13,15 +13,19 @@
 	<f:metadata>
         <f:viewParam name="id" value="#{redditViewBean.id}" />
     </f:metadata>
-		<div class="new-reddit">
 		<h:form>
-		<h2>Comments</h2>
-			<my:redditEntry value="#{redditViewBean.reddit}"/>
-				<c:if test="#{redditViewBean.hasComments()}"> 
-					<my:commentEntry value="#{redditViewBean.reddit.comments[0]}" />
-				</c:if>
+			<h2>Reddit Comments</h2>
+			<c:if test="#{not empty redditViewBean.reddit}">
+			<div class="new-reddit">
+				<my:redditEntry value="#{redditViewBean.reddit}"/>
+			</div>
+			<c:if test="#{redditViewBean.hasComments()}"> 
+				<my:commentEntry value="#{redditViewBean.reddit.comments[0]}" />
+			</c:if>
 
-			</h:form>
-		</div>
+	
+			</c:if>
+		</h:form>
+		
 	</ui:define>
 </ui:composition>
