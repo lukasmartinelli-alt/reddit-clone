@@ -5,8 +5,8 @@
     xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-facesconfig_2_2.xsd"
     version="2.2">
 	<managed-bean>
-		<managed-bean-name>loginController</managed-bean-name>
-		<managed-bean-class>ch.lukasmartinelli.redditclone.beans.LoginController</managed-bean-class>
+		<managed-bean-name>userBean</managed-bean-name>
+		<managed-bean-class>ch.lukasmartinelli.redditclone.beans.UserBean</managed-bean-class>
 		<managed-bean-scope>session</managed-bean-scope>
 	</managed-bean>
 		<managed-bean>
@@ -22,6 +22,11 @@
 		<managed-bean>
 			<managed-bean-name>redditTableBean</managed-bean-name>
 			<managed-bean-class>ch.lukasmartinelli.redditclone.beans.RedditTableBean</managed-bean-class>
+			<managed-bean-scope>view</managed-bean-scope>
+		</managed-bean>
+		<managed-bean>
+			<managed-bean-name>loginBean</managed-bean-name>
+			<managed-bean-class>ch.lukasmartinelli.redditclone.beans.LoginBean</managed-bean-class>
 			<managed-bean-scope>view</managed-bean-scope>
 		</managed-bean>
 	<navigation-rule>

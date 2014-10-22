@@ -4,11 +4,10 @@ import java.net.URL;
 import java.util.ArrayList;
 import java.util.Date;
 
-import ch.lukasmartinelli.redditclone.beans.LoginController;
+import ch.lukasmartinelli.redditclone.beans.UserBean;
 import ch.lukasmartinelli.redditclone.bl.User;
 import ch.lukasmartinelli.redditclone.bl.reddit.Comment;
 import ch.lukasmartinelli.redditclone.bl.reddit.Reddit;
-import ch.lukasmartinelli.redditclone.bl.reddit.RedditRepository;
 
 /**
  * Backing store for all data that needs to be persisted. Is managed by the
@@ -19,6 +18,7 @@ public class DataContainer implements Serializable {
 	
 	
 	public ArrayList<Reddit> reddits = new ArrayList<>();
+	public ArrayList<User> users = new ArrayList<User>();
 
 	public DataContainer() {
 	}
@@ -29,19 +29,36 @@ public class DataContainer implements Serializable {
 	 */
 	public static DataContainer getNew() {
 		DataContainer dataContainer = new DataContainer();
-		dataContainer.reddits = DataContainer.createExampleReddits();
+		dataContainer.users = DataContainer.createExampleUsers();
+		dataContainer.reddits = DataContainer.createExampleReddits(dataContainer.users.get(0));
 
 		return dataContainer;
 	}
 	
-	private static ArrayList<Reddit> createExampleReddits() {
+	private static ArrayList<User> createExampleUsers() {
+		ArrayList<User> users = new ArrayList<User>();
+		
+		User user1 = new User();
+		user1.setLogin("myUserName");
+		user1.setMail("severin.buehler@hsr.ch");
+		user1.setName("Hans Ueli Hofstetter");
+		user1.setPassword("homo");
+		users.add(user1);
+		
+		User user2 = new User();
+		user2.setLogin("psommer");
+		user2.setMail("psommer@hsr.ch");
+		user2.setName("Peter Sommerlad");
+		user2.setPassword("blub");
+		users.add(user2);
+		
+		return users;
+	}
+
+	private static ArrayList<Reddit> createExampleReddits(User exampleUser) {
 		ArrayList<Reddit> reddits = new ArrayList<Reddit>();
-		User u = new User();
-		u.setLogin("myUserName");
-		u.setMail("severin.buehler@hsr.ch");
-		u.setName("Hans Ueli Hofstetter");
-		u.setPassword("homo");
-		Comment c = getCommentTree(u);
+		
+		Comment c = getCommentTree(exampleUser);
 		for (int i = 0; i < 30; i++) {
 			Reddit r = new Reddit();
 			r.setId(i);
@@ -50,7 +67,7 @@ public class DataContainer implements Serializable {
 				r.setLink(new URL("http://www.20min.ch"));
 			} catch (Exception e) {
 			}
-			r.setUser(u);
+			r.setUser(exampleUser);
 			r.setCreateTime(new Date());
 			r.addComment(c);
 			reddits.add(r);
@@ -62,7 +79,7 @@ public class DataContainer implements Serializable {
 				r.setLink(new URL("http://www.bluewin.ch"));
 			} catch (Exception e) {
 			}
-			r.setUser(u);
+			r.setUser(exampleUser);
 			r.setCreateTime(new Date());
 			r.addComment(c);
 			reddits.add(r);

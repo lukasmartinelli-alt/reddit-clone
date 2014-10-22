@@ -1,6 +1,8 @@
 package ch.lukasmartinelli.redditclone.beans;
 
 
+import javax.faces.context.FacesContext;
+
 import ch.lukasmartinelli.redditclone.bl.reddit.Comment;
 import ch.lukasmartinelli.redditclone.bl.reddit.Reddit;
 import ch.lukasmartinelli.redditclone.dl.DataManager;
@@ -29,6 +31,11 @@ public class RedditViewBean {
 		reddit = new Reddit();
 		reddit.setTitle(title);
 		reddit.setId(12345);
+		
+		FacesContext context = FacesContext.getCurrentInstance();
+		UserBean userBean = context.getApplication().evaluateExpressionGet(context, "#{userBean}", UserBean.class);
+		reddit.setUser(userBean.getCurrentUser());
+		
 		//TODO: set all Reddit Attributs
 		DataManager.getData().reddits.add(reddit);
 		

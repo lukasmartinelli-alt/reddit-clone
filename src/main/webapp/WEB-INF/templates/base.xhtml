@@ -24,15 +24,15 @@
 			</h:link>
 		</div>
 		<div class="submit">
-			<h:link outcome="NewReddit" value="Submit new Link" rendered="#{loginController.isLoggedIn()}" styleClass="button button-primary"></h:link>
+			<h:link outcome="NewReddit" value="Submit new Link" rendered="#{userBean.isLoggedIn()}" styleClass="button button-primary"></h:link>
 		</div>
 		<div class="login">
-			<h:form rendered="#{loginController.isLoggedIn() == false}">
-				<h:inputText value="#{loginController.username}" p:placeholder="Username"></h:inputText>
-				<h:inputSecret value="#{loginController.password}" p:placeholder="Password"></h:inputSecret>
-				<h:commandButton action="#{loginController.register}" styleClass="button" value="Registrieren"
+			<h:form rendered="#{userBean.isLoggedIn() == false}">
+				<h:inputText value="#{loginBean.username}" p:placeholder="Username"></h:inputText>
+				<h:inputSecret value="#{loginBean.password}" p:placeholder="Password"></h:inputSecret>
+				<h:commandButton action="#{loginBean.register}" styleClass="button" value="Registrieren"
 					type="submit" />
-				<h:commandButton action="#{loginController.login}" styleClass="button button-primary" value="Login"
+				<h:commandButton action="#{loginBean.login}" styleClass="button button-primary" value="Login"
 					type="submit" />
 			</h:form>
 		</div>

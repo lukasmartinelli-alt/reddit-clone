@@ -3,7 +3,7 @@ package ch.lukasmartinelli.redditclone.bl.reddit;
 import java.io.Serializable;
 import java.util.ArrayList;
 
-import ch.lukasmartinelli.redditclone.beans.LoginController;
+import ch.lukasmartinelli.redditclone.beans.UserBean;
 import ch.lukasmartinelli.redditclone.bl.User;
 
 public class VoteController implements Serializable {
@@ -17,7 +17,7 @@ public class VoteController implements Serializable {
 	
 	public VoteController(){};
 	public boolean hasCurrentUserUpvoted() {
-		User currentUser = LoginController.getCurrentUser();
+		User currentUser = UserBean.getCurrentUser();
 		
 		if(currentUser == null) return false;
 		
@@ -29,7 +29,7 @@ public class VoteController implements Serializable {
 		return false;
 	}
 	public boolean hasCurrentUserDownvoted() {
-		User currentUser = LoginController.getCurrentUser();
+		User currentUser = UserBean.getCurrentUser();
 		
 		if(currentUser == null) return false;
 		
@@ -89,7 +89,7 @@ public class VoteController implements Serializable {
 
 	public void upVote() {
 
-		User u = LoginController.getCurrentUser();
+		User u = UserBean.getCurrentUser();
 		
 		//if(u!=null) {
 			this.removeVoteFromUser(u);
@@ -99,7 +99,7 @@ public class VoteController implements Serializable {
 	}
 	public void downVote() {
 
-		User u = LoginController.getCurrentUser();
+		User u = UserBean.getCurrentUser();
 		
 		//if(u!=null) {
 			this.removeVoteFromUser(u);
