@@ -44,10 +44,10 @@
 
 /* ===REDDITS=== */
 .reddit {
-	padding: 1rem;
 	position: relative;
 	display:block;
 	min-height: 5rem;
+	margin-bottom: 2rem;
 }
 
 .reddit .reddit-wrapper {

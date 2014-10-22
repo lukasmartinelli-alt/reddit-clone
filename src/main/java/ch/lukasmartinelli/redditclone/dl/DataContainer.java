@@ -57,8 +57,8 @@ public class DataContainer implements Serializable {
 	private static ArrayList<Reddit> createExampleReddits(User exampleUser) {
 		ArrayList<Reddit> reddits = new ArrayList<Reddit>();
 		
-		Comment c = getCommentTree(exampleUser);
-		for (int i = 0; i < 30; i++) {
+		for (int i = 0; i < 2; i++) {
+			Comment c = getCommentTree(exampleUser);
 			Reddit r = new Reddit();
 			r.setId(i);
 			r.setTitle("Dorfmarkt knackt Umsatzrekord");

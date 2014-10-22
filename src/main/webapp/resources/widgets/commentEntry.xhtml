@@ -11,28 +11,25 @@
 		<cc:attribute name="value" required="true"/>
 	</cc:interface>
 	<cc:implementation>
-	<p>yolo</p>
 		<div class="comment">
 			<h:form>
 				<h:panelGroup id="voteData">
-					
-						<div class="votebuttons"
-							title="#{cc.comment.voteController.votesCount} Votes">
-							<h:commandLink action="#{cc.comment.voteController.upVote}">
-								<h:graphicImage
-									styleClass='upvote #{cc.comment.voteController.hasUserUpvoted(userBean.currentUser) ? "active" : ""}'
-									value="resources/images/caret-top.svg" />
-								<f:ajax render="@this voteData" />
-							</h:commandLink>
-							<span class="vote_sum">#{cc.comment.voteController.votesCount}</span>
-							<h:commandLink action="#{cc.comment.voteController.downVote}">
-								<h:graphicImage
-									styleClass='downvote #{cc.comment.voteController.hasUserDownvoted(userBean.currentUser) ? "active" : ""}'
-									value="resources/images/caret-bottom.svg" />
-								<f:ajax render="@this voteData" />
-							</h:commandLink>
-						</div>
-					
+					<div class="votebuttons"
+						title="#{cc.comment.voteController.votesCount} Votes">
+						<h:commandLink action="#{cc.comment.voteController.upVote}">
+							<h:graphicImage
+								styleClass='upvote #{cc.comment.voteController.hasUserUpvoted(userBean.currentUser) ? "active" : ""}'
+								value="resources/images/caret-top.svg" />
+							<f:ajax render="@this voteData" />
+						</h:commandLink>
+						<span class="vote_sum">#{cc.comment.voteController.votesCount}</span>
+						<h:commandLink action="#{cc.comment.voteController.downVote}">
+							<h:graphicImage
+								styleClass='downvote #{cc.comment.voteController.hasUserDownvoted(userBean.currentUser) ? "active" : ""}'
+								value="resources/images/caret-bottom.svg" />
+							<f:ajax render="@this voteData" />
+						</h:commandLink>
+					</div>
 				</h:panelGroup>
 			</h:form>
 			<div class="comment-wrapper">
@@ -40,36 +37,13 @@
 					#{cc.timeAgo} <em><a href="/link/to/author/">#{cc.comment.author.name}</a></em>
 				</p>
 				<p class="comment-text">#{cc.comment.text}</p>
-			</div>
-			
-			
-			<h:form>
-					<h:panelGroup id="commentNew">
-						<h:panelGroup rendered="#{cc.answerActiv}">
-						
-								<pr:inputTextarea rows="2" cols="30" counter="display" maxlength="100" 
-								counterTemplate="{0} characters remaining." autoResize="true" value="#{cc.newText}"/>
-								<h:outputText id="display" />
-								<h:commandLink action="#{cc.addComment()}">
-									<h:outputText value="add comment" />
-								</h:commandLink>
-							
-						</h:panelGroup>
-						<h:panelGroup rendered="#{!cc.answerActiv}">
-							<h:commandLink>
-								<h:outputText value="Antworten"/>
-							 	<f:ajax render="@this commentNew" listener="#{cc.changeAnswerActiv()}" />
-							</h:commandLink>
-						</h:panelGroup>
-					</h:panelGroup>
+				<h:form>
+					<h:inputTextarea cols="30" rows="2" value="#{cc.newText}" />
+					<h:outputText id="display" />
+					<h:commandButton styleClass="button button-primary" value="Comment" action="#{cc.addComment()}">
+					</h:commandButton>
 				</h:form>
-			
-			
-			
-			
-			
+			</div>	
 		</div>
-		
-		
 	</cc:implementation>
 </ui:composition>

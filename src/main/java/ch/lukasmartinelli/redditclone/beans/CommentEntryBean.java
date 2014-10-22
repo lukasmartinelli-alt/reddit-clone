@@ -29,6 +29,7 @@ public class CommentEntryBean  extends UINamingContainer  {
 	public void changeAnswerActiv() {
 		answerActiv = !answerActiv;
 	}
+	
 	public String addComment() {
 		System.out.println("Yolo");
 		answerActiv = false;

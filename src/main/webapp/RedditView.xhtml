@@ -14,10 +14,22 @@
         <f:viewParam name="id" value="#{redditViewBean.id}" />
     </f:metadata>
     <!--  Severin -->
-    <my:commentEntry value="#{redditViewBean.reddit.comments[0]}" />
-    		<c:if test="#{not empty redditViewBean.reddit}">
-		<my:redditEntry value="#{redditViewBean.reddit}"/>
-		<hr />
+    
+	<c:if test="#{not empty redditViewBean.reddit}">
+	<my:redditEntry value="#{redditViewBean.reddit}"/>
+	<hr />
+	<h:form>
+		<h:inputTextarea cols="30" rows="2" value="#{redditViewBean.newText}" />
+		<h:outputText id="display" />
+		<h:commandButton styleClass="button button-primary" value="Comment" action="#{cc.addComment()}">
+		</h:commandButton>
+	</h:form>
+	<div class="comments">
+	    <c:forEach var="comment" items="#{redditViewBean.reddit.comments}">
+	    	<my:commentEntry value="#{comment}" />
+	    </c:forEach>
+    </div>
+    
 
 		
 
