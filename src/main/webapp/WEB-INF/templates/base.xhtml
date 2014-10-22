@@ -41,6 +41,7 @@
 		<ui:insert name="content"></ui:insert>
 	</div>
 	<h:outputScript library="js" name="svg-injector.js" />
+	<ui:insert name="scripts"></ui:insert>
 	<script type="text/javascript">
 		var mySVGsToInject = document.querySelectorAll('.upvote, .downvote');
 		SVGInjector(mySVGsToInject);

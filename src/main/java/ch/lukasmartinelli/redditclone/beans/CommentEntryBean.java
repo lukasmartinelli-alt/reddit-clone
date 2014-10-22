@@ -44,7 +44,6 @@ public class CommentEntryBean  extends UINamingContainer  {
 		return	ret;
 	}
 	public String getTimeAgo() {
-		System.out.println("timeAgo");
 		TimeAgoCalculator tac = new TimeAgoCalculator();
 		Comment c = this.getComment();
 		if(c==null) return "";

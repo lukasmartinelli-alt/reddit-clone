@@ -111,7 +111,7 @@ form.comment-form {
 	margin-bottom: 2rem;
 	position: relative;
 	display:block;
-	min-height: 5rem;
+	min-height: 8.5rem;
 	max-width:56rem;	
 	display:block;
 }
@@ -126,5 +126,10 @@ form.comment-form {
 }
 
 .comment-text {
-	min-height: 6rem;
+}
+
+.comment-create-link img {
+	width: 3.2rem;
+	height: 3.2rem;
+	fill: #4F4A4A;
 }

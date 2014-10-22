@@ -36,11 +36,14 @@
 				<p class="comment-author">
 					#{cc.timeAgo} <em>#{cc.comment.author.name}</em>
 				</p>
-				<p class="comment-text">#{cc.comment.text}</p>
+				<p class="comment-text">
+					#{cc.comment.text}
+				</p>
 				<h:form styleClass="comment-form">
-					<h:inputTextarea cols="30" rows="2" value="#{cc.newText}" />
+					<em><a href="#" class="comment-create-link">add comment</a></em>
+					<h:inputTextarea styleClass="hidden" cols="30" rows="2" value="#{cc.newText}" />
 					<h:outputText id="display" />
-					<h:commandButton styleClass="button" value="Comment" action="#{cc.addComment()}">
+					<h:commandButton styleClass="hidden" value="Comment" action="#{cc.addComment()}">
 					</h:commandButton>
 				</h:form>
 			</div>	

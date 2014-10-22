@@ -14,17 +14,21 @@
         <f:viewParam name="id" value="#{redditViewBean.id}" />
     </f:metadata>
 	<my:redditEntry value="#{redditViewBean.reddit}"/>
-	<hr />
 	<div class="comments">
 		<h:form styleClass="comment-form">
-			<h:inputTextarea cols="30" rows="2" value="#{redditViewBean.newText}" />
+			<em><a href="#" class="comment-create-link">add comment</a></em>
+			<h:inputTextarea styleClass="hidden" cols="30" rows="2" value="#{redditViewBean.newText}" />
 			<h:outputText id="display" />
-			<h:commandButton styleClass="button" value="Comment" action="#{redditViewBean.addComment()}">
+			<h:commandButton styleClass="hidden" value="Comment" action="#{redditViewBean.addComment()}">
 			</h:commandButton>
 		</h:form>
+		<hr />
 	    <c:forEach var="comment" items="#{redditViewBean.reddit.comments}">
 	    	<my:commentEntry value="#{comment}" />
 	    </c:forEach>
-    </div>	
+    </div>
+	</ui:define>
+	<ui:define name="scripts">
+		<h:outputScript library="js" name="comment-form.js" />
 	</ui:define>
 </ui:composition>
