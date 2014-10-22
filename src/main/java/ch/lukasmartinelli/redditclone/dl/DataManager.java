@@ -12,25 +12,25 @@ import java.util.Timer;
 import java.util.TimerTask;
 
 public class DataManager {
-	private static DataContainer data;
+	private DataContainer data;
 
-	public static DataContainer getData() {
+	public DataContainer getData() {
 		return data;
 	}
-	public static void setData(DataContainer d) {
+	public void setData(DataContainer d) {
 		data = d;
 	}
 
-	public static void deserializeX() throws ClassNotFoundException, IOException {
+	public void deserializeX() throws ClassNotFoundException, IOException {
 		File dataFile = getDataFile();
 		System.out.println("Initialize dataManager with "
 				+ dataFile.getAbsolutePath());
 		if (!dataFile.exists()) {
-			DataManager.data = DataContainer.getNew();
+			data = DataContainer.getNew();
 		} else {
 			deserialize();
-			if(DataManager.data == null) {
-				DataManager.data = DataContainer.getNew();
+			if(data == null) {
+				data = DataContainer.getNew();
 			}
 		}
 	}
@@ -42,18 +42,18 @@ public class DataManager {
 		return dataFile;
 	}
 
-	public static void serializeX() throws IOException {
+	public void serializeX() throws IOException {
 		try (FileOutputStream fileOut = new FileOutputStream(getDataFile())) {
 			try (ObjectOutputStream out = new ObjectOutputStream(fileOut)) {
-				out.writeObject(DataManager.data);
+				out.writeObject(data);
 			}
 		}
 	}
 
-	private static void deserialize() throws ClassNotFoundException, IOException {
+	private void deserialize() throws ClassNotFoundException, IOException {
 			try (FileInputStream fileIn = new FileInputStream(getDataFile())) {
 				try (ObjectInputStream in = new ObjectInputStream(fileIn)) {
-					DataManager.data = (DataContainer) in.readObject();
+					data = (DataContainer) in.readObject();
 				}
 			}
 		

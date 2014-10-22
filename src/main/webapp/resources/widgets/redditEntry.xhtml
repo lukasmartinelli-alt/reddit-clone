@@ -9,22 +9,20 @@
 	</cc:interface>
 	<cc:implementation>
 		<h:form>
-	
-
 		<div class="reddit">
 			<h:panelGroup id="voteData">
 				<div class="votebuttons"
 					title="#{cc.reddit.voteController.votesCount} Votes">
 					<h:commandLink action="#{cc.reddit.voteController.upVote}">
 						<h:graphicImage
-							styleClass='upvote #{cc.reddit.voteController.hasCurrentUserUpvoted() ? "active" : ""}'
+							styleClass='upvote #{cc.reddit.voteController.hasUserUpvoted(userBean.currentUser) ? "active" : ""}'
 							value="resources/images/caret-top.svg" />
 						<f:ajax render="@this voteData" />
 					</h:commandLink>
 					<span class="vote_sum">#{cc.reddit.voteController.votesCount}</span>
 					<h:commandLink action="#{cc.reddit.voteController.downVote}">
 						<h:graphicImage
-							styleClass='downvote #{cc.reddit.voteController.hasCurrentUserDownvoted() ? "active" : ""}'
+							styleClass='downvote #{cc.reddit.voteController.hasUserDownvoted(userBean.currentUser) ? "active" : ""}'
 							value="resources/images/caret-bottom.svg" />
 						<f:ajax render="@this voteData" />
 					</h:commandLink>

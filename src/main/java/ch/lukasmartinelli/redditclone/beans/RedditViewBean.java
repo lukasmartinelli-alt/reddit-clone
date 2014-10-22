@@ -12,6 +12,7 @@ public class RedditViewBean {
 	private Reddit reddit;
 	private String title;
 	private String link;
+	private DataManager dataManager;
 	
 	public void setLink(String link){
 		this.link = link;
@@ -27,6 +28,10 @@ public class RedditViewBean {
 		return title;
 	}
 	
+	public RedditViewBean() {
+		dataManager = BeanHelper.findBean("dM");
+	}
+	
 	public void save(){
 		reddit = new Reddit();
 		reddit.setTitle(title);
@@ -37,7 +42,7 @@ public class RedditViewBean {
 		reddit.setUser(userBean.getCurrentUser());
 		
 		//TODO: set all Reddit Attributs
-		DataManager.getData().reddits.add(reddit);
+		dataManager.getData().reddits.add(reddit);
 		
 		System.out.println("Titel: " + reddit.getTitle());
 	}
@@ -48,7 +53,7 @@ public class RedditViewBean {
 
 	public void setId(int id) {
 		this.id = id;
-		for(Reddit r: DataManager.getData().reddits) {
+		for(Reddit r: dataManager.getData().reddits) {
 			if(r.getId() == id){
 				reddit = r;
 				break;

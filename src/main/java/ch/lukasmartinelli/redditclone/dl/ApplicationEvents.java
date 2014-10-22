@@ -7,6 +7,8 @@ import javax.faces.event.PreDestroyApplicationEvent;
 import javax.faces.event.SystemEvent;
 import javax.faces.event.SystemEventListener;
 
+import ch.lukasmartinelli.redditclone.beans.BeanHelper;
+
 public class ApplicationEvents implements SystemEventListener{
 
 	@Override
@@ -20,10 +22,11 @@ public class ApplicationEvents implements SystemEventListener{
 	@Override
 	public void processEvent(SystemEvent event) throws AbortProcessingException {
 		try{
+			DataManager dataManager = BeanHelper.findBean("dM");
 		      if(event instanceof PostConstructApplicationEvent){
-			    	  DataManager.deserializeX();
+			    	  dataManager.deserializeX();
 		      }else if(event instanceof PreDestroyApplicationEvent){
-		    		  DataManager.serializeX();
+		    		  dataManager.serializeX();
 		   		}
 		}catch (Exception ex) {
 			System.out.println(ex.getMessage());

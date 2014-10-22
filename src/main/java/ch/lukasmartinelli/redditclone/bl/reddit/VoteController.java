@@ -3,38 +3,31 @@ package ch.lukasmartinelli.redditclone.bl.reddit;
 import java.io.Serializable;
 import java.util.ArrayList;
 
+import ch.lukasmartinelli.redditclone.beans.BeanHelper;
 import ch.lukasmartinelli.redditclone.beans.UserBean;
 import ch.lukasmartinelli.redditclone.bl.User;
 
 public class VoteController implements Serializable {
 
-	/**
-	 * 
-	 */
 	private static final long serialVersionUID = 1L;
 	private ArrayList<UpVote> upVotes = new ArrayList<>();
 	private ArrayList<DownVote> downVotes = new ArrayList<>();
 	
-	public VoteController(){};
-	public boolean hasCurrentUserUpvoted() {
-		User currentUser = UserBean.getCurrentUser();
-		
-		if(currentUser == null) return false;
+	public boolean hasUserUpvoted(User user) {
+		if(user == null) return false;
 		
 		for(UpVote vote : getUpVotes()) {
-			if(vote.getUser().getName() == currentUser.getName()) {
+			if(vote.getUser().getName() == user.getName()) {
 				return true;
 			}
 		}
 		return false;
 	}
-	public boolean hasCurrentUserDownvoted() {
-		User currentUser = UserBean.getCurrentUser();
-		
-		if(currentUser == null) return false;
+	public boolean hasUserDownvoted(User user) {
+		if(user == null) return false;
 		
 		for(DownVote vote : getDownVotes()) {
-			if(vote.getUser().getName() == currentUser.getName()) {
+			if(vote.getUser().getName() == user.getName()) {
 				return true;
 			}
 		}
@@ -87,23 +80,17 @@ public class VoteController implements Serializable {
 	}
 	
 
-	public void upVote() {
-
-		User u = UserBean.getCurrentUser();
-		
+	public void upVote(User votingUser) {
 		//if(u!=null) {
-			this.removeVoteFromUser(u);
-			addUpVote(new UpVote(u));
+			this.removeVoteFromUser(votingUser);
+			addUpVote(new UpVote(votingUser));
 		//}
 
 	}
-	public void downVote() {
-
-		User u = UserBean.getCurrentUser();
-		
+	public void downVote(User votingUser) {
 		//if(u!=null) {
-			this.removeVoteFromUser(u);
-			addDownVote(new DownVote(u));
+			this.removeVoteFromUser(votingUser);
+			addDownVote(new DownVote(votingUser));
 		//}
 
 	}

@@ -16,7 +16,6 @@ import ch.lukasmartinelli.redditclone.bl.reddit.Reddit;
 public class DataContainer implements Serializable {
 	private static final long serialVersionUID = 1L;
 	
-	
 	public ArrayList<Reddit> reddits = new ArrayList<>();
 	public ArrayList<User> users = new ArrayList<User>();
 

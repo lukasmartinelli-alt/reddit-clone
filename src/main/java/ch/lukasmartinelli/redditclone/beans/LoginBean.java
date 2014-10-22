@@ -10,13 +10,16 @@ public class LoginBean {
 	private static final long serialVersionUID = 1L;
 	private String username;
 	private String password;
+	private UserBean userBean;
+	private DataManager dataManager;
+	
+	public LoginBean() {
+		this.userBean = BeanHelper.findBean("userBean");
+		this.dataManager = BeanHelper.findBean("dM");
+	}
 
 	public String login() {
-		ArrayList<User> users = DataManager.getData().users;
-		FacesContext context = FacesContext.getCurrentInstance();
-		UserBean userBean = context.getApplication().evaluateExpressionGet(context, "#{userBean}", UserBean.class);
-
-		User user = getUserByLogin(users, getUsername());
+		User user = getUserByLogin(dataManager.getData().users, getUsername());
 
 		if (user != null && user.checkPassword(getPassword())) {
 			userBean.setCurrentUser(user);
@@ -29,7 +32,7 @@ public class LoginBean {
 
 	private static User getUserByLogin(ArrayList<User> users, String login) {
 		for (User user : users) {
-			if (login == user.getLogin()) {
+			if (login.equals(user.getLogin())) {
 				return user;
 			}
 		}
@@ -61,7 +64,7 @@ public class LoginBean {
 		user.setName(getUsername());
 		user.setPassword(getPassword());
 
-		DataManager.getData().users.add(user);
+		dataManager.getData().users.add(user);
 		return login();
 	}
 

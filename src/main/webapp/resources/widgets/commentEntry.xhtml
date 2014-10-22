@@ -20,14 +20,14 @@
 							title="#{cc.comment.voteController.votesCount} Votes">
 							<h:commandLink action="#{cc.comment.voteController.upVote}">
 								<h:graphicImage
-									styleClass='upvote #{cc.comment.voteController.hasCurrentUserUpvoted() ? "active" : ""}'
+									styleClass='upvote #{cc.comment.voteController.hasUserUpvoted(userBean.currentUser) ? "active" : ""}'
 									value="resources/images/caret-top.svg" />
 								<f:ajax render="@this voteData" />
 							</h:commandLink>
 							<span class="vote_sum">#{cc.comment.voteController.votesCount}</span>
 							<h:commandLink action="#{cc.comment.voteController.downVote}">
 								<h:graphicImage
-									styleClass='downvote #{cc.comment.voteController.hasCurrentUserDownvoted() ? "active" : ""}'
+									styleClass='downvote #{cc.comment.voteController.hasUserDownvoted(userBean.currentUser) ? "active" : ""}'
 									value="resources/images/caret-bottom.svg" />
 								<f:ajax render="@this voteData" />
 							</h:commandLink>
