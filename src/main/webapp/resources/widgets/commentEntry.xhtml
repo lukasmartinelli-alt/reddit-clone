@@ -16,14 +16,14 @@
 				<h:panelGroup id="voteData">
 					<div class="votebuttons"
 						title="#{cc.comment.votes.votesCount} Votes">
-						<h:commandLink action="#{cc.comment.votes.upVote}">
+						<h:commandLink action="#{cc.comment.votes.upVote(userBean.currentUser)}">
 							<h:graphicImage
 								styleClass='upvote #{cc.comment.votes.hasUserUpvoted(userBean.currentUser) ? "active" : ""}'
 								value="resources/images/caret-top.svg" />
 							<f:ajax render="@this voteData" />
 						</h:commandLink>
 						<span class="vote_sum">#{cc.comment.votes.votesCount}</span>
-						<h:commandLink action="#{cc.comment.votes.downVote}">
+						<h:commandLink action="#{cc.comment.votes.downVote(userBean.currentUser)}">
 							<h:graphicImage
 								styleClass='downvote #{cc.comment.votes.hasUserDownvoted(userBean.currentUser) ? "active" : ""}'
 								value="resources/images/caret-bottom.svg" />
@@ -40,7 +40,7 @@
 				<h:form styleClass="comment-form">
 					<h:inputTextarea cols="30" rows="2" value="#{cc.newText}" />
 					<h:outputText id="display" />
-					<h:commandButton styleClass="button button-primary" value="Comment" action="#{cc.addComment()}">
+					<h:commandButton styleClass="button" value="Comment" action="#{cc.addComment()}">
 					</h:commandButton>
 				</h:form>
 			</div>	

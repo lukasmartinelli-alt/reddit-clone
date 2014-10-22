@@ -19,7 +19,7 @@
 		<h:form styleClass="comment-form">
 			<h:inputTextarea cols="30" rows="2" value="#{redditViewBean.newText}" />
 			<h:outputText id="display" />
-			<h:commandButton styleClass="button button-primary" value="Comment" action="#{redditViewBean.addComment()}">
+			<h:commandButton styleClass="button" value="Comment" action="#{redditViewBean.addComment()}">
 			</h:commandButton>
 		</h:form>
 	    <c:forEach var="comment" items="#{redditViewBean.reddit.comments}">
