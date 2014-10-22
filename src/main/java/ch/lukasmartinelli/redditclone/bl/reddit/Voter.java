@@ -7,12 +7,14 @@ import ch.lukasmartinelli.redditclone.beans.BeanHelper;
 import ch.lukasmartinelli.redditclone.beans.UserBean;
 import ch.lukasmartinelli.redditclone.bl.User;
 
-public class VoteController implements Serializable {
+public class Voter implements Serializable {
 
 	private static final long serialVersionUID = 1L;
 	private ArrayList<UpVote> upVotes = new ArrayList<>();
 	private ArrayList<DownVote> downVotes = new ArrayList<>();
-	
+
+	public Voter(){};
+
 	public boolean hasUserUpvoted(User user) {
 		if(user == null) return false;
 		
@@ -23,6 +25,7 @@ public class VoteController implements Serializable {
 		}
 		return false;
 	}
+
 	public boolean hasUserDownvoted(User user) {
 		if(user == null) return false;
 		
@@ -33,6 +36,7 @@ public class VoteController implements Serializable {
 		}
 		return false;
 	}
+
 	public ArrayList<UpVote> getUpVotes() {
 		return upVotes;
 	}
@@ -43,6 +47,7 @@ public class VoteController implements Serializable {
 	public ArrayList<DownVote> getDownVotes() {
 		return downVotes;
 	}
+
 	public void addDownVote(DownVote downVotes) {
 		this.downVotes.add(downVotes);
 	}
@@ -50,7 +55,8 @@ public class VoteController implements Serializable {
 	public int getVotesCount() {
 		return upVotes.size() - downVotes.size();
 	}
-	public void removeVoteFromUser(User u) {
+
+	private void removeVoteFromUser(User u) {
 		if(u!=null){
 			UpVote up = getUpVoteFromUser(u);
 			DownVote dn = getDownVoteFromUser(u);
@@ -62,6 +68,7 @@ public class VoteController implements Serializable {
 			}
 		}
 	}
+
 	public UpVote getUpVoteFromUser(User u) {
 		for(UpVote v: upVotes) {
 			if(v.getUser().getLogin().equals(u.getLogin())){
@@ -70,6 +77,7 @@ public class VoteController implements Serializable {
 		}
 		return null;
 	}
+
 	public DownVote getDownVoteFromUser(User u) {
 		for(DownVote v: downVotes) {
 			if(v.getUser().getLogin().equals(u.getLogin())){
@@ -78,20 +86,14 @@ public class VoteController implements Serializable {
 		}
 		return null;
 	}
-	
 
 	public void upVote(User votingUser) {
-		//if(u!=null) {
-			this.removeVoteFromUser(votingUser);
-			addUpVote(new UpVote(votingUser));
-		//}
+		this.removeVoteFromUser(votingUser);
+		addUpVote(new UpVote(votingUser));
 
 	}
 	public void downVote(User votingUser) {
-		//if(u!=null) {
-			this.removeVoteFromUser(votingUser);
-			addDownVote(new DownVote(votingUser));
-		//}
-
+		this.removeVoteFromUser(votingUser);
+		addDownVote(new DownVote(votingUser));
 	}
 }

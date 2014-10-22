@@ -12,26 +12,25 @@
 	</cc:interface>
 	<cc:implementation>
 		<div class="comment">
-			<h:form>
+		<h:form>
 				<h:panelGroup id="voteData">
 					<div class="votebuttons"
-						title="#{cc.comment.voteController.votesCount} Votes">
-						<h:commandLink action="#{cc.comment.voteController.upVote}">
+						title="#{cc.comment.votes.votesCount} Votes">
+						<h:commandLink action="#{cc.comment.votes.upVote}">
 							<h:graphicImage
-								styleClass='upvote #{cc.comment.voteController.hasUserUpvoted(userBean.currentUser) ? "active" : ""}'
+								styleClass='upvote #{cc.comment.votes.hasUserUpvoted(userBean.currentUser) ? "active" : ""}'
 								value="resources/images/caret-top.svg" />
 							<f:ajax render="@this voteData" />
 						</h:commandLink>
-						<span class="vote_sum">#{cc.comment.voteController.votesCount}</span>
-						<h:commandLink action="#{cc.comment.voteController.downVote}">
+						<span class="vote_sum">#{cc.comment.votes.votesCount}</span>
+						<h:commandLink action="#{cc.comment.votes.downVote}">
 							<h:graphicImage
-								styleClass='downvote #{cc.comment.voteController.hasUserDownvoted(userBean.currentUser) ? "active" : ""}'
+								styleClass='downvote #{cc.comment.votes.hasUserDownvoted(userBean.currentUser) ? "active" : ""}'
 								value="resources/images/caret-bottom.svg" />
 							<f:ajax render="@this voteData" />
 						</h:commandLink>
 					</div>
 				</h:panelGroup>
-			</h:form>
 			<div class="comment-wrapper">
 				<p class="comment-author">
 					#{cc.timeAgo} <em>#{cc.comment.author.name}</em>

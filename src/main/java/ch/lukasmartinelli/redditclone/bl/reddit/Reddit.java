@@ -25,7 +25,7 @@ public class Reddit implements Serializable {
 	private URL link;
 	private Date createTime;
 	private ArrayList<Comment> comments = new ArrayList<>();
-	VoteController voteController = new VoteController();
+	Voter votes = new Voter();
 	
 	public Reddit(){
 	
@@ -81,8 +81,8 @@ public class Reddit implements Serializable {
 	public ArrayList<Comment> getComments(){
 		return comments;
 	}
-	public VoteController getVoteController() {
-		return voteController;
+	public Voter getVotes() {
+		return votes;
 	}
 
 	public int getId() {

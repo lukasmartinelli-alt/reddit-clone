@@ -29,16 +29,14 @@ public class CommentEntryBean  extends UINamingContainer  {
 	public void changeAnswerActiv() {
 		answerActiv = !answerActiv;
 	}
-	
-	public String addComment() {
-		System.out.println("Yolo");
+
+	public void addComment() {
 		answerActiv = false;
 		Comment c = new Comment();
 		c.setAuthor(new User());
 		c.setCreationTime(new Date());
 		c.setText(newText);
 		this.getComment().addSubComment(c);
-		return "RedditTable.xhtml";
 	}
 
 	public Comment getComment() {
@@ -46,6 +44,7 @@ public class CommentEntryBean  extends UINamingContainer  {
 		return	ret;
 	}
 	public String getTimeAgo() {
+		System.out.println("timeAgo");
 		TimeAgoCalculator tac = new TimeAgoCalculator();
 		Comment c = this.getComment();
 		if(c==null) return "";
