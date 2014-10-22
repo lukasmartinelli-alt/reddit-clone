@@ -34,10 +34,10 @@
 			</h:form>
 			<div class="comment-wrapper">
 				<p class="comment-author">
-					#{cc.timeAgo} <em><a href="/link/to/author/">#{cc.comment.author.name}</a></em>
+					#{cc.timeAgo} <em>#{cc.comment.author.name}</em>
 				</p>
 				<p class="comment-text">#{cc.comment.text}</p>
-				<h:form>
+				<h:form styleClass="comment-form">
 					<h:inputTextarea cols="30" rows="2" value="#{cc.newText}" />
 					<h:outputText id="display" />
 					<h:commandButton styleClass="button button-primary" value="Comment" action="#{cc.addComment()}">

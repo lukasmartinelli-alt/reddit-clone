@@ -6,12 +6,11 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
+import java.io.Serializable;
 import java.io.UnsupportedEncodingException;
-import java.net.URLDecoder;
-import java.util.Timer;
-import java.util.TimerTask;
 
-public class DataManager {
+public class DataManager implements Serializable {
+	private static final long serialVersionUID = -163494119598137976L;
 	private DataContainer data;
 
 	public DataContainer getData() {

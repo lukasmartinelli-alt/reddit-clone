@@ -1,13 +1,15 @@
 package ch.lukasmartinelli.redditclone.beans;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
 import javax.faces.context.FacesContext;
+
 import ch.lukasmartinelli.redditclone.bl.User;
 import ch.lukasmartinelli.redditclone.dl.DataManager;
 
-public class LoginBean {
-	private static final long serialVersionUID = 1L;
+public class LoginBean implements Serializable {
+	private static final long serialVersionUID = -7525426507940195553L;
 	private String username;
 	private String password;
 	private UserBean userBean;

@@ -50,6 +50,10 @@
 	margin-bottom: 2rem;
 }
 
+form.comment-form {
+	max-width:56rem;	
+}
+
 .reddit .reddit-wrapper {
 	padding-left: 6rem;
 }

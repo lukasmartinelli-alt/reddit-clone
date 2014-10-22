@@ -1,9 +1,11 @@
 package ch.lukasmartinelli.redditclone.beans;
 
-import ch.lukasmartinelli.redditclone.bl.User;
-import ch.lukasmartinelli.redditclone.dl.DataManager;
+import java.io.Serializable;
 
-public class UserBean {
+import ch.lukasmartinelli.redditclone.bl.User;
+
+public class UserBean implements Serializable {
+	private static final long serialVersionUID = -4059287358140732319L;
 	private User currentUser;
 	
 	public boolean isLoggedIn() {

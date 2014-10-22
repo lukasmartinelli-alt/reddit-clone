@@ -1,16 +1,15 @@
 package ch.lukasmartinelli.redditclone.beans;
 
 
+import java.io.Serializable;
 import java.util.Date;
 
-import javax.faces.context.FacesContext;
-
-import ch.lukasmartinelli.redditclone.bl.User;
 import ch.lukasmartinelli.redditclone.bl.reddit.Comment;
 import ch.lukasmartinelli.redditclone.bl.reddit.Reddit;
 import ch.lukasmartinelli.redditclone.dl.DataManager;
 
-public class RedditViewBean {
+public class RedditViewBean implements Serializable {
+	private static final long serialVersionUID = -6948876237469828621L;
 	private int id;
 	private Reddit reddit;
 	private DataManager dataManager;

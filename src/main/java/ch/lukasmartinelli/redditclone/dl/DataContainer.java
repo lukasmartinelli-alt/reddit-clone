@@ -4,7 +4,6 @@ import java.net.URL;
 import java.util.ArrayList;
 import java.util.Date;
 
-import ch.lukasmartinelli.redditclone.beans.UserBean;
 import ch.lukasmartinelli.redditclone.bl.User;
 import ch.lukasmartinelli.redditclone.bl.reddit.Comment;
 import ch.lukasmartinelli.redditclone.bl.reddit.Reddit;
@@ -14,8 +13,7 @@ import ch.lukasmartinelli.redditclone.bl.reddit.Reddit;
  * DataManager.
  */
 public class DataContainer implements Serializable {
-	private static final long serialVersionUID = 1L;
-	
+	private static final long serialVersionUID = 804787552520801955L;
 	public ArrayList<Reddit> reddits = new ArrayList<>();
 	public ArrayList<User> users = new ArrayList<User>();
 

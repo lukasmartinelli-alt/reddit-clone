@@ -1,12 +1,14 @@
 package ch.lukasmartinelli.redditclone.beans;
 
+import java.io.Serializable;
 import java.util.Comparator;
 import java.util.List;
 
 import ch.lukasmartinelli.redditclone.bl.reddit.Reddit;
 import ch.lukasmartinelli.redditclone.dl.DataManager;
 
-public class RedditTableBean {
+public class RedditTableBean implements Serializable {
+	private static final long serialVersionUID = 3802373645905442609L;
 	private DataManager dataManager;
 	
 	public RedditTableBean() {
