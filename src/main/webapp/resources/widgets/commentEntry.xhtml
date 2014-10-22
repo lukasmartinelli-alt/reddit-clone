@@ -13,7 +13,7 @@
 	<cc:implementation>
 	<p>yolo</p>
 		<div class="comment">
-			<h:form>
+		<h:form>
 				<h:panelGroup id="voteData">
 					
 						<div class="votebuttons"
@@ -34,36 +34,36 @@
 						</div>
 					
 				</h:panelGroup>
-			</h:form>
+		
 			<div class="comment-wrapper">
 				<p class="comment-author">
 					#{cc.timeAgo} <em><a href="/link/to/author/">#{cc.comment.author.name}</a></em>
 				</p>
 				<p class="comment-text">#{cc.comment.text}</p>
 			</div>
-			
+			</h:form>
 			
 			<h:form>
 					<h:panelGroup id="commentNew">
 						<h:panelGroup rendered="#{cc.answerActiv}">
+						<h:inputText value="#{cc.newText}"/>
+
+								<br/>
+
+								<h:commandButton value="add" action="#{cc.changeAnswerActiv()}"/>
+
+						</h:panelGroup>
+						<h:panelGroup rendered="#{!cc.answerActiv}">
 						
-								<pr:inputTextarea rows="2" cols="30" counter="display" maxlength="100" 
-								counterTemplate="{0} characters remaining." autoResize="true" value="#{cc.newText}"/>
-								<h:outputText id="display" />
-								<h:commandLink action="#{cc.addComment()}">
-									<h:outputText value="add comment" />
+								<h:commandLink>
+									<h:outputText value="Antworten"/>
+								 	<f:ajax render="@this commentNew" listener="#{cc.changeAnswerActiv()}" />
 								</h:commandLink>
 							
 						</h:panelGroup>
-						<h:panelGroup rendered="#{!cc.answerActiv}">
-							<h:commandLink>
-								<h:outputText value="Antworten"/>
-							 	<f:ajax render="@this commentNew" listener="#{cc.changeAnswerActiv()}" />
-							</h:commandLink>
-						</h:panelGroup>
 					</h:panelGroup>
-				</h:form>
 			
+			</h:form>
 			
 			
 			
