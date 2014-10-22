@@ -12,7 +12,7 @@
 	</cc:interface>
 	<cc:implementation>
 		<div class="comment">
-		<h:form>
+			<h:form>
 				<h:panelGroup id="voteData">
 					<div class="votebuttons"
 						title="#{cc.comment.votes.votesCount} Votes">
@@ -30,7 +30,8 @@
 							<f:ajax render="@this voteData" />
 						</h:commandLink>
 					</div>
-				</h:panelGroup>
+				</h:panelGroup>			
+			</h:form>
 			<div class="comment-wrapper">
 				<p class="comment-author">
 					#{cc.timeAgo} <em>#{cc.comment.author.name}</em>

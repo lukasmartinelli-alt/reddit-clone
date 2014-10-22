@@ -36,14 +36,15 @@
 				</h:outputLink>
 
 				<p>
-					#{cc.timeAgo} <a href="/link/to/author/">#{cc.reddit.user.name}</a>
+					#{cc.timeAgo} <em>#{cc.reddit.user.name}</em>
 				</p>
 				<p>
-					<em> <h:link outcome="RedditView.xhtml">
+					<em>
+						<h:link outcome="RedditView.xhtml">
 							<h:outputText value="#{cc.reddit.commentsCount} comments"></h:outputText>
 							<f:param name="id" value="#{cc.reddit.id}"></f:param>
 						</h:link>
-						</em>
+					</em>
 				</p>
 			</div>
 		</div>

@@ -3,8 +3,6 @@ package ch.lukasmartinelli.redditclone.bl.reddit;
 import java.io.Serializable;
 import java.util.ArrayList;
 
-import ch.lukasmartinelli.redditclone.beans.BeanHelper;
-import ch.lukasmartinelli.redditclone.beans.UserBean;
 import ch.lukasmartinelli.redditclone.bl.User;
 
 public class Voter implements Serializable {
@@ -88,11 +86,15 @@ public class Voter implements Serializable {
 	}
 
 	public void upVote(User votingUser) {
+		if(votingUser == null) throw new IllegalArgumentException("Cannot vote without a user");
+		
 		this.removeVoteFromUser(votingUser);
 		addUpVote(new UpVote(votingUser));
 
 	}
 	public void downVote(User votingUser) {
+		if(votingUser == null) throw new IllegalArgumentException("Cannot vote without a user");
+		
 		this.removeVoteFromUser(votingUser);
 		addDownVote(new DownVote(votingUser));
 	}
