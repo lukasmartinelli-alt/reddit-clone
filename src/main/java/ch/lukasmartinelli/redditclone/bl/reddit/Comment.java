@@ -10,12 +10,12 @@ public class Comment  implements Serializable {
 	/**
 	 * 
 	 */
-	private static final long serialVersionUID = 1L;
+	private static final long serialVersionUID = 2L;
 	private String text;
 	private User author;
 	private Date creationTime;
 	private ArrayList<Comment> subComments = new ArrayList<>();
-	private VoteController voteController = new VoteController();
+	private Voter votes = new Voter();
 	
 
 	public void setText(String text){
@@ -62,8 +62,8 @@ public class Comment  implements Serializable {
 		return ret;
 	}
 
-	public VoteController getVoteController() {
-		return voteController;
+	public Voter getVotes() {
+		return votes;
 	}
 
 

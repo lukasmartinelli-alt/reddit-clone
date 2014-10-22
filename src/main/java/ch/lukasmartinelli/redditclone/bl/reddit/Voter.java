@@ -6,7 +6,7 @@ import java.util.ArrayList;
 import ch.lukasmartinelli.redditclone.beans.UserBean;
 import ch.lukasmartinelli.redditclone.bl.User;
 
-public class VoteController implements Serializable {
+public class Voter implements Serializable {
 
 	/**
 	 * 
@@ -15,10 +15,8 @@ public class VoteController implements Serializable {
 	private ArrayList<UpVote> upVotes = new ArrayList<>();
 	private ArrayList<DownVote> downVotes = new ArrayList<>();
 	
-	public VoteController(){};
-	public boolean hasCurrentUserUpvoted() {
-		User currentUser = UserBean.getCurrentUser();
-		
+	public Voter(){};
+	public boolean hasUserUpvoted(User currentUser) {
 		if(currentUser == null) return false;
 		
 		for(UpVote vote : getUpVotes()) {
@@ -28,9 +26,8 @@ public class VoteController implements Serializable {
 		}
 		return false;
 	}
-	public boolean hasCurrentUserDownvoted() {
-		User currentUser = UserBean.getCurrentUser();
-		
+	public boolean hasUserDownvoted(User currentUser) {
+
 		if(currentUser == null) return false;
 		
 		for(DownVote vote : getDownVotes()) {
@@ -57,7 +54,7 @@ public class VoteController implements Serializable {
 	public int getVotesCount() {
 		return upVotes.size() - downVotes.size();
 	}
-	public void removeVoteFromUser(User u) {
+	private void removeVoteFromUser(User u) {
 		if(u!=null){
 			UpVote up = getUpVoteFromUser(u);
 			DownVote dn = getDownVoteFromUser(u);
@@ -87,23 +84,19 @@ public class VoteController implements Serializable {
 	}
 	
 
-	public void upVote() {
-
-		User u = UserBean.getCurrentUser();
+	public void upVote(User currentUser) {
 		
 		//if(u!=null) {
-			this.removeVoteFromUser(u);
-			addUpVote(new UpVote(u));
+			this.removeVoteFromUser(currentUser);
+			addUpVote(new UpVote(currentUser));
 		//}
 
 	}
-	public void downVote() {
-
-		User u = UserBean.getCurrentUser();
+	public void downVote(User currentUser) {
 		
 		//if(u!=null) {
-			this.removeVoteFromUser(u);
-			addDownVote(new DownVote(u));
+			this.removeVoteFromUser(currentUser);
+			addDownVote(new DownVote(currentUser));
 		//}
 
 	}
