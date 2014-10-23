@@ -10,6 +10,8 @@ import java.util.Date;
 
 
 
+import java.util.UUID;
+
 import ch.lukasmartinelli.redditclone.bl.TimeAgoCalculator;
 import ch.lukasmartinelli.redditclone.bl.User;
 
@@ -19,7 +21,7 @@ public class Reddit implements Serializable {
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
-	private int id;
+	private long id;
 	private String title;
 	private User user;
 	private URL link;
@@ -28,7 +30,7 @@ public class Reddit implements Serializable {
 	Voter votes = new Voter();
 	
 	public Reddit(){
-	
+		id = Math.abs(UUID.randomUUID().getMostSignificantBits());
 	}
 	
 	public Reddit(String titel, User user){
@@ -85,13 +87,10 @@ public class Reddit implements Serializable {
 		return votes;
 	}
 
-	public int getId() {
+	public long getId() {
 		return id;
 	}
 
-	public void setId(int id) {
-		this.id = id;
-	}
 
 
 
