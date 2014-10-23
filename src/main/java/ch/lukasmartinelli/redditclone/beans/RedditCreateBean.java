@@ -13,7 +13,7 @@ public class RedditCreateBean implements Serializable {
 	private static final long serialVersionUID = -1584203142133336546L;
 	private String title;
 	private String link;
-	private String message ="";
+	private String message;
 	private DataManager dataManager;
 	private UserBean userBean;
 	
