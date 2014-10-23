@@ -23,9 +23,19 @@
 			</h:commandButton>
 		</h:form>
 		<hr />
-	    <c:forEach var="comment" items="#{redditViewBean.reddit.comments}">
-	    	<my:commentEntry value="#{comment}" />
-	    </c:forEach>
+		<ui:repeat value="#{redditViewBean.reddit.comments}" var="comment">
+			<my:commentEntry value="#{comment}" />
+			<div class="comments">
+				<ui:repeat value="#{comment.subComments}" var="subComment">
+					<my:commentEntry value="#{subComment}" />
+					<div class="comments">
+						<ui:repeat value="#{subComment.subComments}" var="subSubComment">
+							<my:commentEntry value="#{subSubComment}" />
+						</ui:repeat>
+					</div>
+				</ui:repeat>
+			</div>
+		</ui:repeat>
     </div>
 	</ui:define>
 	<ui:define name="scripts">
