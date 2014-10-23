@@ -29,13 +29,14 @@ public class RedditViewBean implements Serializable {
 		this.newText = text;
 	}
 	
-	public String addComment() {
+	public void addComment() {
+		User currentUser = userBean.getCurrentUser();
+		if(currentUser == null) return;
+		
 		Comment c = new Comment();
-		c.setAuthor(userBean.getCurrentUser());
 		c.setCreationTime(new Date());
-		c.setText(newText);
+		c.setText(getNewText());
 		reddit.addComment(c);
-		return "RedditTable.xhtml";
 	}
 	
 	public int getId() {

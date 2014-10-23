@@ -8,11 +8,15 @@ import javax.faces.component.UINamingContainer;
 import ch.lukasmartinelli.redditclone.bl.TimeAgoCalculator;
 import ch.lukasmartinelli.redditclone.bl.User;
 import ch.lukasmartinelli.redditclone.bl.reddit.Comment;
+import ch.lukasmartinelli.redditclone.dl.DataManager;
 @FacesComponent(value="commentEntry")
 public class CommentEntryBean  extends UINamingContainer  {
-	
 	private String newText;
-	private boolean answerActiv = false;
+	private UserBean userBean;
+	
+	public CommentEntryBean() {
+		userBean = BeanHelper.findBean("userBean");
+	}
 	
 	public String getNewText() {
 		return newText;
@@ -22,32 +26,28 @@ public class CommentEntryBean  extends UINamingContainer  {
 		this.newText = text;
 	}
 
-	public boolean getAnswerActiv() {
-		return answerActiv;
-	}
-
-	public void changeAnswerActiv() {
-		answerActiv = !answerActiv;
-	}
-
 	public void addComment() {
-		answerActiv = false;
-		Comment c = new Comment();
-		c.setAuthor(new User());
-		c.setCreationTime(new Date());
-		c.setText(newText);
-		this.getComment().addSubComment(c);
+		User currentUser = userBean.getCurrentUser();
+		if(currentUser == null) return;
+		
+		Comment comment = new Comment();
+		comment.setAuthor(currentUser);
+		comment.setCreationTime(new Date());
+		comment.setText(getNewText());
+		this.getComment().addSubComment(comment);
 	}
 
 	public Comment getComment() {
 		Comment ret = (Comment) this.getAttributes().get("value");
 		return	ret;
 	}
+
 	public String getTimeAgo() {
+		Comment comment = this.getComment();
+		if(comment==null) return "";
+		
 		TimeAgoCalculator tac = new TimeAgoCalculator();
-		Comment c = this.getComment();
-		if(c==null) return "";
-		String timeAgo = "posted " + tac.getTimeAgo(c.getCreationTime()) + " ago by ";
+		String timeAgo = "posted " + tac.getTimeAgo(comment.getCreationTime()) + " ago by ";
 		return timeAgo;
 	}
 
