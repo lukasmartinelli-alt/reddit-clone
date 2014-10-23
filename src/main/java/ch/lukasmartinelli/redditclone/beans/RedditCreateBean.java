@@ -13,6 +13,7 @@ public class RedditCreateBean implements Serializable {
 	private static final long serialVersionUID = -1584203142133336546L;
 	private String title;
 	private String link;
+	private String message ="";
 	private DataManager dataManager;
 	private UserBean userBean;
 	
@@ -37,17 +38,34 @@ public class RedditCreateBean implements Serializable {
 		this.link = link;
 	}
 	
+	public String getMessage() {
+		return message;
+	}
+
+	public void setMessage(String message) {
+		this.message = message;
+	}
+	
 	public String save() throws MalformedURLException{
 		User currentUser = userBean.getCurrentUser();
 		if(currentUser == null) return null;
-		
 		Reddit reddit = new Reddit();
 		reddit.setTitle(title);
-		reddit.setLink(new URL(getLink()));
-		reddit.setCreateTime(new Date());
-		reddit.setUser(currentUser);
+		try {
+			
+			URL url = new URL(getLink());
+			reddit.setLink(url);
+			reddit.setCreateTime(new Date());
+			reddit.setUser(currentUser);
+			dataManager.getData().reddits.add(reddit);
+			return "RedditTable.xhtml";
+			
+		} catch (MalformedURLException e) {
+			setMessage("URL is not vaild. Example: http://www.google.ch");
+			return null;
+		}
 		
-		dataManager.getData().reddits.add(reddit);
-		return "RedditTable.xhtml";
+		
+
 	}
 }

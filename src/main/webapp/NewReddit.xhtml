@@ -13,6 +13,8 @@
 				<h:inputText p:placeholder="URL" value="#{redditCreateBean.link}"></h:inputText>
 				<br />
 				<h:commandButton styleClass="button button-primary" value="Submit new Link" action="#{redditCreateBean.save}"></h:commandButton>
+				<br />
+				<h:outputText value="#{redditCreateBean.message}"></h:outputText>
 			</h:form>
 		</div>
 	</ui:define>
