@@ -11,7 +11,7 @@ import ch.lukasmartinelli.redditclone.dl.DataManager;
 
 public class RedditViewBean implements Serializable {
 	private static final long serialVersionUID = -6948876237469828621L;
-	private int id;
+	private long id;
 	private Reddit reddit;
 	private DataManager dataManager;
 	private UserBean userBean;
@@ -40,11 +40,11 @@ public class RedditViewBean implements Serializable {
 		reddit.addComment(c);
 	}
 	
-	public int getId() {
+	public long getId() {
 		return id;
 	}
 
-	public void setId(int id) {
+	public void setId(long id) {
 		this.id = id;
 		for(Reddit r: dataManager.getData().reddits) {
 			if(r.getId() == id){

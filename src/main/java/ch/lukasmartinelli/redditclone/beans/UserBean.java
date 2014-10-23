@@ -7,7 +7,7 @@ import ch.lukasmartinelli.redditclone.bl.User;
 public class UserBean implements Serializable {
 	private static final long serialVersionUID = -4059287358140732319L;
 	private User currentUser;
-	private String userLocale;
+	private String userLocale = "en";
 	
 	public boolean isLoggedIn() {
 		return currentUser != null;
