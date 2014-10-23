@@ -59,7 +59,6 @@ public class DataContainer implements Serializable {
 		
 		Comment comment1 = getCommentTree(exampleUser);		
 		Reddit reddit1 = new Reddit();
-		reddit1.setId(31);
 		reddit1.setTitle("Dorfmarkt knackt Umsatzrekord");
 		reddit1.setLink(new URL("http://www.20min.ch"));		
 		reddit1.setUser(exampleUser);
@@ -69,7 +68,6 @@ public class DataContainer implements Serializable {
 
 		Comment comment2 = getCommentTree(exampleUser);
 		Reddit reddit2 = new Reddit();
-		reddit2.setId(32);
 		reddit2.setTitle("Dies ist ein Test");
 		reddit2.setLink(new URL("http://www.bluewin.ch"));
 		reddit2.setUser(exampleUser);

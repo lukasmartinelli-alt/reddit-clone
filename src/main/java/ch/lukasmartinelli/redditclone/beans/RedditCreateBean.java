@@ -45,7 +45,6 @@ public class RedditCreateBean implements Serializable {
 		reddit.setTitle(title);
 		reddit.setLink(new URL(getLink()));
 		reddit.setCreateTime(new Date());
-		reddit.setId(12345);
 		reddit.setUser(currentUser);
 		
 		dataManager.getData().reddits.add(reddit);
