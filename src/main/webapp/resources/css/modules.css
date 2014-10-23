@@ -101,6 +101,18 @@ form.comment-form {
 	max-width: 56rem;
 	display: block;
 }
+
+/* ===LANGUAGE=== */
+
+.language-chooser {
+	float: right;
+}
+
+.language-chooser > a {
+	margin-left: 1rem;
+}
+
+
 /* ===COMMENTS=== */
 .comments {
 	clear: left;
