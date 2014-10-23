@@ -4,6 +4,7 @@ package ch.lukasmartinelli.redditclone.beans;
 import java.io.Serializable;
 import java.util.Date;
 
+import ch.lukasmartinelli.redditclone.bl.User;
 import ch.lukasmartinelli.redditclone.bl.reddit.Comment;
 import ch.lukasmartinelli.redditclone.bl.reddit.Reddit;
 import ch.lukasmartinelli.redditclone.dl.DataManager;

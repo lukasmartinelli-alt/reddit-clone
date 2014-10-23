@@ -3,7 +3,9 @@ package ch.lukasmartinelli.redditclone.beans;
 import java.io.Serializable;
 import java.net.MalformedURLException;
 import java.net.URL;
+import java.util.Date;
 
+import ch.lukasmartinelli.redditclone.bl.User;
 import ch.lukasmartinelli.redditclone.bl.reddit.Reddit;
 import ch.lukasmartinelli.redditclone.dl.DataManager;
 
@@ -36,12 +38,16 @@ public class RedditCreateBean implements Serializable {
 	}
 	
 	public String save() throws MalformedURLException{
+		User currentUser = userBean.getCurrentUser();
+		if(currentUser == null) return null;
+		
 		Reddit reddit = new Reddit();
 		reddit.setTitle(title);
 		reddit.setLink(new URL(getLink()));
+		reddit.setCreateTime(new Date());
 		reddit.setId(12345);
+		reddit.setUser(currentUser);
 		
-		reddit.setUser(userBean.getCurrentUser());
 		dataManager.getData().reddits.add(reddit);
 		return "RedditTable.xhtml";
 	}
