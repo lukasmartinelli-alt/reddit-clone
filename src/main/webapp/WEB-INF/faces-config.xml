@@ -61,5 +61,13 @@
             javax.faces.event.PreDestroyApplicationEvent
          </system-event-class>    					
       </system-event-listener>
+      <locale-config>
+      	<default-locale>en</default-locale>
+      	<supported-locale>de</supported-locale>
+      </locale-config>
+      	   <resource-bundle>
+		<base-name>resources.internat.local</base-name>
+		<var>msg</var>
+	   </resource-bundle>
    </application>
 </faces-config>

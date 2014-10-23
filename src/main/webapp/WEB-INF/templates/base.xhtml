@@ -2,7 +2,8 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
 	xmlns:h="http://java.sun.com/jsf/html"
 	xmlns:ui="http://java.sun.com/jsf/facelets"
-	xmlns:p="http://xmlns.jcp.org/jsf/passthrough">
+	xmlns:p="http://xmlns.jcp.org/jsf/passthrough"
+	 xmlns:f="http://java.sun.com/jsf/core">
 <h:head>
 	<meta charset="UTF-8"></meta>
 	<title><ui:insert name="title">Reddit Clone</ui:insert></title>
@@ -14,6 +15,7 @@
 	<h:outputStylesheet library="css" name="modules.css" />
 </h:head>
 <h:body>
+<f:view locale="#{userBean.userLocale}">
 	<div class="header">
 		<div class="branding">
 			<h:link outcome="RedditTable">
@@ -23,8 +25,12 @@
 				</h1>
 			</h:link>
 		</div>
+		<h:form>
+			<h:commandLink value="Deutsch" action="#{userBean.setGerman()}" />
+			<h:commandLink value="English" action="#{userBean.setEnglish()}" />
+		</h:form>
 		<div class="submit">
-			<h:link outcome="NewReddit" value="Submit new Link" rendered="#{userBean.isLoggedIn()}" styleClass="button button-primary"></h:link>
+			<h:link outcome="NewReddit" value="#{msg['post']}" rendered="#{userBean.isLoggedIn()}" styleClass="button button-primary"></h:link>
 		</div>
 		<div class="login">
 			<h:form rendered="#{userBean.isLoggedIn() == false}">
@@ -46,5 +52,6 @@
 		var mySVGsToInject = document.querySelectorAll('.upvote, .downvote');
 		SVGInjector(mySVGsToInject);
 	</script>
+	</f:view>
 </h:body>
 </html>
