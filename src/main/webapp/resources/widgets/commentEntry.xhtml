@@ -46,6 +46,9 @@
 					<h:commandButton styleClass="hidden" value="Comment" action="#{cc.addComment()}">
 					</h:commandButton>
 				</h:form>
+				<c:forEach val="subComment" items="#{cc.comment.subComments}">
+	    			<my:commentEntry value="#{subComment}" />
+				</c:forEach>
 			</div>	
 		</div>
 	</cc:implementation>

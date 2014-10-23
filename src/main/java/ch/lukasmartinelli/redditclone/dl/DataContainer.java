@@ -1,5 +1,6 @@
 package ch.lukasmartinelli.redditclone.dl;
 import java.io.Serializable;
+import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.Date;
@@ -23,8 +24,9 @@ public class DataContainer implements Serializable {
 	/**
 	 * Create a new DataContainer and populate it with sample data.
 	 * @return Fully initialized DataContainer with sample data
+	 * @throws MalformedURLException 
 	 */
-	public static DataContainer getNew() {
+	public static DataContainer getNew() throws MalformedURLException {
 		DataContainer dataContainer = new DataContainer();
 		dataContainer.users = DataContainer.createExampleUsers();
 		dataContainer.reddits = DataContainer.createExampleReddits(dataContainer.users.get(0));
@@ -52,35 +54,29 @@ public class DataContainer implements Serializable {
 		return users;
 	}
 
-	private static ArrayList<Reddit> createExampleReddits(User exampleUser) {
+	private static ArrayList<Reddit> createExampleReddits(User exampleUser) throws MalformedURLException {
 		ArrayList<Reddit> reddits = new ArrayList<Reddit>();
 		
-		for (int i = 0; i < 2; i++) {
-			Comment c = getCommentTree(exampleUser);
-			Reddit r = new Reddit();
-			r.setId(i);
-			r.setTitle("Dorfmarkt knackt Umsatzrekord");
-			try {
-				r.setLink(new URL("http://www.20min.ch"));
-			} catch (Exception e) {
-			}
-			r.setUser(exampleUser);
-			r.setCreateTime(new Date());
-			r.addComment(c);
-			reddits.add(r);
+		Comment comment1 = getCommentTree(exampleUser);		
+		Reddit reddit1 = new Reddit();
+		reddit1.setId(31);
+		reddit1.setTitle("Dorfmarkt knackt Umsatzrekord");
+		reddit1.setLink(new URL("http://www.20min.ch"));		
+		reddit1.setUser(exampleUser);
+		reddit1.setCreateTime(new Date());
+		reddit1.addComment(comment1);
+		reddits.add(reddit1);
 
-			r = new Reddit();
-			r.setId(i + 30);
-			r.setTitle("Dies ist ein Test");
-			try {
-				r.setLink(new URL("http://www.bluewin.ch"));
-			} catch (Exception e) {
-			}
-			r.setUser(exampleUser);
-			r.setCreateTime(new Date());
-			r.addComment(c);
-			reddits.add(r);
-		}
+		Comment comment2 = getCommentTree(exampleUser);
+		Reddit reddit2 = new Reddit();
+		reddit2.setId(32);
+		reddit2.setTitle("Dies ist ein Test");
+		reddit2.setLink(new URL("http://www.bluewin.ch"));
+		reddit2.setUser(exampleUser);
+		reddit2.setCreateTime(new Date());
+		reddit2.addComment(comment2);
+		reddits.add(reddit2);
+			
 		return reddits;
 	}
 
