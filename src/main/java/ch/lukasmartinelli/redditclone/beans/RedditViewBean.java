@@ -10,7 +10,7 @@ import ch.lukasmartinelli.redditclone.bl.reddit.Reddit;
 import ch.lukasmartinelli.redditclone.dl.DataManager;
 
 public class RedditViewBean implements Serializable {
-	private static final long serialVersionUID = -6948876237469828621L;
+	private static final long serialVersionUID = -3133311385283800567L;
 	private long id;
 	private Reddit reddit;
 	private DataManager dataManager;

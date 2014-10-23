@@ -71,9 +71,6 @@ public class LoginBean implements Serializable {
 	}
 
 	public String logOut() {
-		FacesContext context = FacesContext.getCurrentInstance();
-		UserBean userBean = context.getApplication().evaluateExpressionGet(
-				context, "#{user}", UserBean.class);
 		userBean.setCurrentUser(null);
 		return "home";
 	}

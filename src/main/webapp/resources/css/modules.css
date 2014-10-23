@@ -1,8 +1,8 @@
 /* ===SUBMIT LINK=== */
 .submit {
 	margin-top: 1.3rem;
-	margin-left: 3rem;
-	float: left;
+	margin-left: 1rem;
+	float: right;
 }
 
 .submit input {
@@ -13,9 +13,17 @@
 	width: auto;
 }
 
+/* ===LOGOUT=== */
+
+.logout {
+	margin-top: 1.3rem;
+	float: right;
+}
+
 /* ===HEADER LOGIN=== */
 .login {
-	clear: left; margin-top : 0.5rem;
+	clear: left;
+	margin-top : 0.5rem;
 	overflow: hidden;
 	margin-top: 0.5rem;
 }
@@ -105,11 +113,15 @@ form.comment-form {
 /* ===LANGUAGE=== */
 
 .language-chooser {
-	float: right;
+	float: left;
+	margin-left: 1rem;
+	margin-top: 2rem;
 }
 
 .language-chooser > a {
-	margin-left: 1rem;
+	font-size: 1rem;
+	font-weight: bold;
+	padding: 0.3rem;
 }
 
 
