@@ -9,11 +9,10 @@
 		<div class="new-reddit">
 		<h1>Submit a new Link</h1>
 			<h:form>
-				<h:inputText p:placeholder="Title" value="#{redditViewBean.title}"></h:inputText>
-				<h:inputText p:placeholder="URL" value="#{redditViewBean.link}"></h:inputText>
-	
+				<h:inputText p:placeholder="Title" value="#{redditCreateBean.title}"></h:inputText>
+				<h:inputText p:placeholder="URL" value="#{redditCreateBean.link}"></h:inputText>
 				<br />
-				<h:commandButton styleClass="button button-primary" value="Submit new Link" action="#{redditViewBean.save}"></h:commandButton>
+				<h:commandButton styleClass="button button-primary" value="Submit new Link" action="#{redditCreateBean.save}"></h:commandButton>
 			</h:form>
 		</div>
 	</ui:define>

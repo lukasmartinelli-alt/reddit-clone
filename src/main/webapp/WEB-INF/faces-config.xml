@@ -29,6 +29,11 @@
 			<managed-bean-class>ch.lukasmartinelli.redditclone.beans.LoginBean</managed-bean-class>
 			<managed-bean-scope>view</managed-bean-scope>
 		</managed-bean>
+		<managed-bean>
+			<managed-bean-name>redditCreateBean</managed-bean-name>
+			<managed-bean-class>ch.lukasmartinelli.redditclone.beans.RedditCreateBean</managed-bean-class>
+			<managed-bean-scope>view</managed-bean-scope>
+		</managed-bean>
 	<navigation-rule>
 		<display-name>login.xhtml</display-name>
 		<from-view-id>/login.xhtml</from-view-id>
